@@ -1,0 +1,35 @@
+#siteLinks.collapse.navbar-collapse
+  ul.navbar-nav
+    li.nav-item
+      a.nav-link(href='/') Home
+    li.nav-item
+      a.nav-link(href='/news') News
+    li.nav-item
+      a.nav-link(href='/about') About
+    li.nav-item.dropdown
+      a.nav-item.nav-link.dropdown-toggle.mr-md-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+        | Programs
+      .dropdown-menu.programs-menu
+        a.dropdown-item(href='/programs/recreational') Recreational
+        h5.dropdown-header Boys
+          a.dropdown-item(href='/programs/boys/u15') U15
+          a.dropdown-item(href='/programs/boys/u13') U13
+          a.dropdown-item(href='/programs/boys/u11') U11
+          a.dropdown-item(href='/programs/boys/u9') U9
+        h5.dropdown-header Girls
+          a.dropdown-item(href='/programs/girls/u15') U15
+          a.dropdown-item(href='/programs/girls/u13') U13
+          a.dropdown-item(href='/programs/girls/u11') U11
+          a.dropdown-item(href='/programs/girls/u9') U9
+    li.nav-item
+      a.nav-link(href='/coaching') Coaching
+    li.nav-item
+      a.nav-link(href='/parents') Parents
+    li.nav-item
+      a.nav-link(href='/volunteers') Volunteers
+    li.nav-item
+      a.nav-link(href='/registration') Registration
+    if user
+      if user.canAccessKeystone
+        li.nav-item: a.nav-link(href='/keystone') Admin
+      li.nav-item: a.nav-link(href='/keystone/signout') Logout

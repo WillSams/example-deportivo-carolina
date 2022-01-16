@@ -1,0 +1,149 @@
+/* colors used for backgrounds/text */
+/*color only used for backgrounds and hr */
+/* color only used for hyperlinks */
+html {
+  height: 100%;
+  width: 100%; }
+  html body {
+    font-family: 'Lato', sans-serif;
+    src: url("//fonts.googleapis.com/css?family=Lato") format("truetype");
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: auto 100%;
+    -moz-background-size: auto 100%;
+    -o-background-size: auto 100%;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(34, 174, 74, 0.375), rgba(34, 174, 74, 0.375)), url("/images/default-bkg.jpg");
+    margin-top: 55px;
+    color: #fff;
+    font-weight: bolder;
+    background-color: #22ae4a; }
+    html body h1, html body h2, html body h3 {
+      font-family: 'Montserrat', sans-serif;
+      src: url("//fonts.googleapis.com/css?family=Montserrat") format("truetype");
+      font-weight: 100; }
+    html body .sams-heading {
+      font-family: 'Montserrat', sans-serif;
+      src: url("//fonts.googleapis.com/css?family=Montserrat") format("truetype");
+      font-weight: 100;
+      text-align: center;
+      color: #000; }
+    html body .samswebs {
+      font-family: 'Permanent Marker','Montserrat';
+      src: url("//fonts.googleapis.com/css?family=Permanent+Marker|Montserrat") format("truetype");
+      font-size: 18px;
+      color: #22ae4a;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
+    html body .samswebs:hover {
+      color: #000; }
+    html body a {
+      text-decoration: none; }
+    html body a:link {
+      text-decoration: none;
+      color: #87aab9; }
+    html body a:visited {
+      text-decoration: none;
+      color: #87aab9; }
+    html body a:hover {
+      text-decoration: none;
+      color: #22ae4a; }
+    html body .row.content {
+      height: auto; }
+    html body .navbar {
+      color: #fff; }
+    html body .highlighted {
+      color: #e9e581; }
+    html body hr {
+      color: #22ae4a;
+      background-color: #000; }
+    html body #countDown {
+      background-color: rgba(255, 255, 255, 0.75); }
+    html body .white-text {
+      color: #22ae4a; }
+    html body .black-text {
+      color: #fff; }
+    html body .gold-text {
+      color: #e9e581; }
+    html body .red-background {
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #22ae4a; }
+    html body .black-background {
+      background-color: rgba(255, 255, 255, 0.75);
+      color: #22ae4a; }
+    html body .white-background {
+      background-color: rgba(34, 174, 74, 0.375);
+      color: #fff; }
+    html body .gold-background {
+      background-color: rgba(233, 229, 129, 0.75);
+      color: #fff; }
+    html body .full-area-content {
+      padding-top: 35px;
+      padding-bottom: 75px;
+      height: auto;
+      margin: auto;
+      display: block; }
+    html body a.anchor-fa {
+      padding-left: 5px; }
+    html body .btn-xl {
+      padding: 1rem 1.75rem;
+      font-size: 1.25rem; }
+    html body .center-block {
+      margin: auto;
+      display: block;
+      text-align: center; }
+    html body .social-icon-lg, html body .social-icon-md, html body .social-icon-sm {
+      padding: 10px; }
+    html body .social-icon-sm {
+      font-size: 10px; }
+    html body .social-icon-md {
+      font-size: 20px; }
+    html body .social-icon-lg {
+      font-size: 30px; }
+    html body .rounded {
+      padding: 5px 5px;
+      border-radius: .25rem !important; }
+    html body .back-to-top {
+      position: fixed;
+      display: none;
+      background: rgba(0, 0, 0, 0.85);
+      color: #22ae4a;
+      padding: 6px 12px 9px 12px;
+      font-size: 16px;
+      border-radius: 2px;
+      right: 15px;
+      bottom: 15px;
+      transition: background 0.5s;
+      z-index: 1000; }
+    html body .back-to-top:focus {
+      background: rgba(34, 174, 74, 0.375);
+      color: #000;
+      outline: none; }
+    html body .back-to-top:hover {
+      background: rgba(0, 0, 0, 0.85);
+      color: #22ae4a; }
+    html body #main-content #announcements-area, html body #main-content #schedules-area, html body #main-content #fields-area, html body #main-content #sponsors-area, html body #main-content #calendar-area {
+      background-color: rgba(0, 0, 0, 0.85); }
+    html body #contact-content {
+      background-color: rgba(255, 255, 255, 0.75);
+      color: #22ae4a; }
+      html body #contact-content h2, html body #contact-content h3 {
+        color: #22ae4a; }
+    html body #terms-content, html body #privacy-content {
+      font-size: 12px; }
+    html body footer {
+      background-color: #fff;
+      color: #22ae4a;
+      padding: 15px;
+      margin: auto auto;
+      text-align: center; }
+    html body .footer-side {
+      font-size: 11px; }
+    @media screen and (max-width: 767px) {
+      html body .full-area-content {
+        padding-top: 50px;
+        padding-bottom: 155px; }
+      html body .row.content {
+        height: auto; }
+      html body footer[class*="col-md-8"].pull-right {
+        float: none; } }

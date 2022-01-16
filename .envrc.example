@@ -1,0 +1,9 @@
+export NODE_ENV=development
+export COOKIE_SECRET=c00ki3s3cr3t
+
+export MONGO_PORT=
+export MONGO_URI=mongodb://deportivo-dev-user:passw0rd123@127.0.0.1:27017/deportivo-dev
+
+export PORT=8686
+
+export MEMCACHE_SERVER=localhost:11211
