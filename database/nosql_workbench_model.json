@@ -1,0 +1,366 @@
+{
+  "ModelName": "Deportivo Carolina de Fútbol Data Model",
+  "ModelMetadata": {
+    "Author": "Will Sams",
+    "Version": "3.0",
+    "AWSService": "Amazon DynamoDB"
+  },
+  "DataModel": [
+    {
+      "TableName": "Soccer",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "Id",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "Metadata",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "GameDay",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "WinLoss",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "TeamName",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Arena",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "PlayerName",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "Position",
+          "AttributeType": "S"
+        }
+      ],
+      "TableFacets": [
+        {
+          "FacetName": "SoccerTeam",
+          "KeyAttributeAlias": {
+            "PartitionKeyAlias": "TeamId",
+            "SortKeyAlias": "Metadata"
+          },
+          "NonKeyAttributes": [
+            "TeamName",
+            "Arena"
+          ],
+          "TableData": [
+            {
+              "Id": {
+                "S": "BoysU9"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Boys U9"
+              },
+              "Arena": {
+                "S": "City Complex A"
+              }
+            },
+            {
+              "Id": {
+                "S": "GirlsU9"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Girls U9"
+              },
+              "Arena": {
+                "S": "City Complex A"
+              }
+            },
+            {
+              "Id": {
+                "S": "BoysU11"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Boys U11"
+              },
+              "Arena": {
+                "S": "City Complex B"
+              }
+            },
+            {
+              "Id": {
+                "S": "GirlsU11"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Girls U11"
+              },
+              "Arena": {
+                "S": "City Complex B"
+              }
+            },
+            {
+              "Id": {
+                "S": "BoysU13"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Boys U13"
+              },
+              "Arena": {
+                "S": "City Complex C"
+              }
+            },
+            {
+              "Id": {
+                "S": "GirlsU13"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Girls U13"
+              },
+              "Arena": {
+                "S": "City Complex C"
+              }
+            },
+            {
+              "Id": {
+                "S": "BoysU15"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Boys U15"
+              },
+              "Arena": {
+                "S": "City Complex D"
+              }
+            },
+            {
+              "Id": {
+                "S": "GirlsU15"
+              },
+              "Metadata": {
+                "S": "Team"
+              },
+              "TeamName": {
+                "S": "Girls U15"
+              },
+              "Arena": {
+                "S": "City Complex D"
+              }
+            }
+          ]
+        }
+      ],
+      "LocalSecondaryIndexes": [],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "MetadataIndex",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "Metadata",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "MetadataTeamIndex",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "Metadata",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "TeamName",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "MetadataPlayerIndex",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "Metadata",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "PlayerName",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "MetadataGameIndex",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "Metadata",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GameDay",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "TableData": [
+        {
+          "Id": {
+            "S": "BoysU9"
+          },
+          "Metadata": {
+            "S": "Player-01"
+          },
+          "PlayerName": {
+            "S": "John Doe"
+          },
+          "Position": {
+            "S": "FW"
+          }
+        },
+        {
+          "Id": {
+            "S": "BoysU9"
+          },
+          "Metadata": {
+            "S": "Player-02"
+          },
+          "PlayerName": {
+            "S": "Jane Smith"
+          },
+          "Position": {
+            "S": "MD"
+          }
+        },
+        {
+          "Id": {
+            "S": "BoysU9"
+          },
+          "Metadata": {
+            "S": "Player-03"
+          },
+          "PlayerName": {
+            "S": "John Smith"
+          },
+          "Position": {
+            "S": "D"
+          }
+        },
+        {
+          "Id": {
+            "S": "2"
+          },
+          "Metadata": {
+            "S": "Player-04"
+          },
+          "PlayerName": {
+            "S": "Jane Doe"
+          },
+          "Position": {
+            "S": "FW"
+          }
+        },
+        {
+          "Id": {
+            "S": "2"
+          },
+          "Metadata": {
+            "S": "Player-05"
+          },
+          "PlayerName": {
+            "S": "Joey Doe"
+          },
+          "Position": {
+            "S": "FW"
+          }
+        },
+        {
+          "Id": {
+            "S": "BoysU9"
+          },
+          "Metadata": {
+            "S": "Game-BoysU9-SSCJ-01"
+          },
+          "GameDay": {
+            "S": "Oct-09-2018"
+          },
+          "WinLoss": {
+            "S": "Loss"
+          }
+        },
+        {
+          "Id": {
+            "S": "7"
+          },
+          "Metadata": {
+            "S": "Game-SSCJ-BoysU9-01"
+          },
+          "GameDay": {
+            "S": "Oct-09-2018"
+          },
+          "WinLoss": {
+            "S": "Win"
+          }
+        }
+      ],
+      "BillingMode": "PROVISIONED",
+      "ProvisionedCapacitySettings": {
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 5,
+          "WriteCapacityUnits": 5
+        },
+        "AutoScalingRead": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        },
+        "AutoScalingWrite": {
+          "ScalableTargetRequest": {
+            "MinCapacity": 1,
+            "MaxCapacity": 10,
+            "ServiceRole": "AWSServiceRoleForApplicationAutoScaling_DynamoDBTable"
+          },
+          "ScalingPolicyConfiguration": {
+            "TargetValue": 70
+          }
+        }
+      }
+    }
+  ]
+}

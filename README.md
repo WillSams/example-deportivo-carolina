@@ -1,8 +1,10 @@
-# React/GraphQL/DynamoDb Example Site - Deportivo Carolina
+# Example Site - Deportivo Carolina de Fútbol
+
+A monolith application using React, GraphQL, & AWS DynamoDb.
 
 WIP
 
-For an abandoned KeystoneJS 4.0 example from 3 years ago, see the `abandoned` branch.
+For an abandoned KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
 
 ## Pre-requisites
 
