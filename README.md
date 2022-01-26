@@ -1,6 +1,6 @@
 # Example Site - Deportivo de Carolina Fútbol Club
 
-A monolith application using React, GraphQL, & AWS DynamoDb.
+A full-stack application using React, GraphQL, & AWS DynamoDb.
 
 TODO:
 
