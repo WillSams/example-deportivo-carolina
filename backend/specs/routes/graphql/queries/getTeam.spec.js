@@ -10,7 +10,8 @@ chai.use(require('chai-http'));
 chai.should();
 
 describe('Route - Queries - /api/graphql', () => {
-  before(() => reseedDb());;;
+  before(() => reseedDb());
+
   it('`getTeam` query should retrieve team', done => {
     chai.request(bootstrap)
       .post('/api/graphql')

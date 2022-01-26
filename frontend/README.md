@@ -1,1 +1,1 @@
-# Example Site - Deportivo Carolina de Fútbol - FrontEnd
+# Example Site - Deportivo de Carolina Fútbol Club - FrontEnd

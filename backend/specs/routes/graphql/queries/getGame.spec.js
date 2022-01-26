@@ -13,6 +13,7 @@ describe('Route - Queries - /api/graphql', () => {
   before(() => reseedDb());;
 
   const variables = { teamId: 'test-team-1', gameId: 'Game-4' };
+
   it('`getGame` query should retrieve game', done => {
     chai.request(bootstrap)
       .post('/api/graphql')

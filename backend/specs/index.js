@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 const { spawn } = require('child_process');
-const { resolve } = require('dns');
+const { sleep } = require('sleep');
 
 const { createGame, createPlayer, createTeam } = require('../src/resolvers/mutations');
 
@@ -41,6 +41,12 @@ const games = [
 
 ];
 
+const removeDbTestData = () => {
+  sleep(1);
+  spawn(`${__dirname}/clean_db.sh`);
+  sleep(1);
+};
+
 const reseedDb = () => {
   removeDbTestData();
 
@@ -49,12 +55,7 @@ const reseedDb = () => {
   games.map(input => createGame(null, { input }));
 };
 
-const removeDbTestData = () => {
-  require('sleep').sleep(1);
-  spawn(`${__dirname}/clean_db.sh`);
-};
-
 module.exports = {
   reseedDb,
   removeDbTestData,
-}
+};

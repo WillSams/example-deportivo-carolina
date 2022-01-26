@@ -1,4 +1,4 @@
-# Example Site - Deportivo Carolina de Fútbol
+# Example Site - Deportivo de Carolina Fútbol Club
 
 A monolith application using React, GraphQL, & AWS DynamoDb.
 

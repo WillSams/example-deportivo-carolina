@@ -3,9 +3,7 @@ process.env.NODE_ENV = 'test';
 const chai = require('chai');
 const expect = chai.expect;
 
-const { createTeam } = require('../../../src/resolvers/mutations')
-
-const { reseedDb, } = require('../../../specs');
+const { createTeam } = require('../../../src/resolvers/mutations');
 
 chai.should();
 
