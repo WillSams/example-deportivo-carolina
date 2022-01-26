@@ -2,7 +2,13 @@
 
 A monolith application using React, GraphQL, & AWS DynamoDb.
 
-WIP
+TODO:
+
+- Write frontend tests.
+- Write more backend tests.
+- Add token-based authentication.
+- Add CI/CD w/ CircleCI.
+- Create deployment container and ship it AWS Elastic Container Registry.
 
 For an abandoned KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
 
