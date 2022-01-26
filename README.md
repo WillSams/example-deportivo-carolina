@@ -10,7 +10,7 @@ TODO:
 - Add CI/CD w/ CircleCI.
 - Create deployment container and ship it AWS Elastic Container Registry.
 
-For an abandoned KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
+For a KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
 
 ## Pre-requisites
 
