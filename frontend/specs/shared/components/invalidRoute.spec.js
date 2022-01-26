@@ -4,12 +4,13 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-import { mountWithRouter } from '../reactTestHelpers';
-import { InvalidRoutePage } from '../../src/shared/components/InvalidRoute';
+import { mountWithRouter } from '../../reactTestHelpers';
+import { InvalidRoute } from '../../../src/shared/components';
 
-describe('InvalidRoutePage', () => {
+
+describe('InvalidRoute component', () => {
   test('should render without error', () => {
-    const wrapper = mountWithRouter(<InvalidRoutePage />);
+    const wrapper = mountWithRouter(<InvalidRoute />);
     const title = wrapper.find('h1').text();
 
     expect(title).toEqual('Page not found');

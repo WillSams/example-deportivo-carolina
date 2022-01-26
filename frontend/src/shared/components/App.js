@@ -8,8 +8,6 @@ import { InvalidRoute } from './';
 
 import { default as Pages } from '../../pages';
 
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-
 const App = () => {
   return (
     <Provider store={configureStore()}>
