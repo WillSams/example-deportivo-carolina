@@ -2,13 +2,12 @@
 
 A full-stack application using React, GraphQL, & AWS DynamoDb.
 
-![text](frontend-1.png){ width=15%,height:5px }
-![text](frontend-2.png){ width=15%,height:5px }
-![text](frontend-3.png){ width=15%,height:5px }
+![text](frontend-1.png)
+![text](frontend-2.png)
+![text](frontend-3.png)
 
 TODO:
 
-- Write frontend tests.
 - Write more backend tests.
 - Add token-based authentication.
 - Add CI/CD w/ CircleCI.
