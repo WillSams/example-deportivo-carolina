@@ -10,7 +10,7 @@ const TeamsPage = ({ }) => {
   const team = useSelector(state => state?.site?.teams?.team);
 
   return (
-    <div data-name="Teams-page" className="col-lg-12">
+    <div data-name="teams-page" className="col-lg-12">
 
       <div className="jumbotron p-3 p-md-5 text-white rounded bg-dark">
         <h1 className="display-4 font-italic">{team?.TeamName}</h1>

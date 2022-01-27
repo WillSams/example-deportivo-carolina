@@ -4,7 +4,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "lint": "eslint . --ignore-pattern 'public/'",
+    "lint": "eslint backend --ignore-pattern 'public/' && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'dist/'",
+    "lint-fix": "eslint backend --ignore-pattern 'public/' --fix && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'dist/' --fix",
     "dev": "direnv allow && concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\""
   },
   "devDependencies": {

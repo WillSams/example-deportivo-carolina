@@ -1,6 +1,6 @@
 export const getGame = `
-query GetGame($teamId: String!, $gameId: String!) {
-  getGame(teamId: $teamId, gameId: $gameId) {
+query game($teamId: String!, $gameId: String!) {
+  game(teamId: $teamId, gameId: $gameId) {
     Id
     Metadata
     GameDay
@@ -9,8 +9,8 @@ query GetGame($teamId: String!, $gameId: String!) {
 }`;
 
 export const getPlayer = `
-query GetPlayer($teamId: String!, $playerId: String!) {
-  getPlayer(teamId: $teamId, playerId: $playerId) {
+query player($teamId: String!, $playerId: String!) {
+  player(teamId: $teamId, playerId: $playerId) {
     Id
     Metadata
     PlayerName
@@ -19,8 +19,8 @@ query GetPlayer($teamId: String!, $playerId: String!) {
 }`;
 
 export const getTeam = `
-query GetTeam($teamId: String!) {
-  getTeam(teamId: $teamId) {
+query team($teamId: String!) {
+  team(teamId: $teamId) {
     Id
     Metadata
     TeamName
@@ -45,7 +45,7 @@ query GetTeam($teamId: String!) {
 }`;
 
 export const listTeamGames = `
-query ListTeamGames($teamId: String!) {
+query teamGames($teamId: String!) {
   listTeamGames(teamId: $teamId) {
     Id
     Metadata
@@ -55,7 +55,7 @@ query ListTeamGames($teamId: String!) {
 }`;
 
 export const listTeamPlayers = `
-query ListTeamPlayers($teamId: String!) {
+query teamPlayers($teamId: String!) {
   listTeamPlayers(teamId: $teamId) {
     Id
     Metadata
@@ -65,7 +65,7 @@ query ListTeamPlayers($teamId: String!) {
 }`;
 
 export const listTeams = `
-query ListTeams {
+query teams {
   listTeams {
     Id
     Metadata

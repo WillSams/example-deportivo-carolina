@@ -26,14 +26,14 @@ describe('Route - Queries - /api/graphql', () => {
             WinLoss
           }
         }`,
-        variables: { "teamId": "test-team-1" },
+        variables: { 'teamId': 'test-team-1' },
       })
       .end((err, res) => {
         if (err) return done(err);
 
         expect(res.status).to.equal(200);
 
-        res.headers["content-type"].should.contains('application/json');
+        res.headers['content-type'].should.contains('application/json');
 
         const data = res?.body?.data;
 

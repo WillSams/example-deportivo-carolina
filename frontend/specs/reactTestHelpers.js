@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 export const mockStore = () =>
   createStore(state => state, { shared: { config: { bypass_legacy_app_redirect: true } }, });
 
-export const mountWithRouter = (node, initialEntries = []) =>
+export const mountWithRouter = (node, initialEntries = ['/']) =>
   mount(
     <Provider store={mockStore()}>
       <MemoryRouter initialEntries={initialEntries}>{node}</MemoryRouter>

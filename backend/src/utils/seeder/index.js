@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 const faker = require('faker');
-const moment = require("moment");
+const moment = require('moment');
 
 const boysNames = ['Abdullah', 'Adam', 'Adrian', 'Adriel', 'Alaric', 'Alejandro', 'Alexander', 'Allan', 'Ambrose', 'Ameer',
     'Anders', 'Antonee', 'Austin', 'Benjamin', 'Bennett', 'Bentley', 'Bode', 'Booker', 'Anthony', 'Braden', 'Brooks',
@@ -26,17 +26,17 @@ const girlsNames = ['Aaliyah', 'Abigail', 'Addison', 'Alice', 'Allison', 'Amelia
 const getFakeName = teamId => {
     const firstName = teamId.startsWith('boys') ? _.sample(boysNames) : _.sample(girlsNames);
     return `${firstName} ${faker.name.lastName()}`;
-}
+};
 
 const getFakeBirthdate = teamId => {
     const birthdate = () => {
-        if (teamId === 'girlsU9' || teamId === 'boysU9') return faker.date.between('2013-01-01', '2013-12-31')
-        if (teamId === 'girlsU11' || teamId === 'boysU11') return faker.date.between('2011-01-01', '2011-12-31')
-        if (teamId === 'girlsU13' || teamId === 'boysU13') return faker.date.between('2009-01-01', '2009-12-31')
+        if (teamId === 'girlsU9' || teamId === 'boysU9') return faker.date.between('2013-01-01', '2013-12-31');
+        if (teamId === 'girlsU11' || teamId === 'boysU11') return faker.date.between('2011-01-01', '2011-12-31');
+        if (teamId === 'girlsU13' || teamId === 'boysU13') return faker.date.between('2009-01-01', '2009-12-31');
         if (teamId === 'girlsU15' || teamId === 'boysU15') return faker.date.between('2007-01-01', '2007-12-31');
     };
 
-    return moment(birthdate()).format("YYYY-MM-DD");
+    return moment(birthdate()).format('YYYY-MM-DD');
 };
 
 const getFakeHeight = teamId => {
@@ -49,7 +49,7 @@ const getFakeHeight = teamId => {
     };
 
     return faker.random.number(heightRange());
-}
+};
 
 const getFakeWeight = teamId => {
     // this isn't really scientific shit right here...
@@ -61,7 +61,7 @@ const getFakeWeight = teamId => {
         if (teamId === 'boysU15') return { min: 75, max: 175 };
     };
     return faker.random.number(weightRange());
-}
+};
 
 const getFakeJerseyNumber = pos => {
     if (pos === 'G') return _.sample([1, 12, 23, 34, 45,]);
@@ -79,7 +79,7 @@ const getFakeHomeTown = () => {
     const city = _.sample(cities);
 
     return `${city}, SC`;
-}
+};
 
 const getShootingFoot = pos => {
     const feet = pos === 'F' ? ['left', 'right', 'both',] : ['left', 'right'];

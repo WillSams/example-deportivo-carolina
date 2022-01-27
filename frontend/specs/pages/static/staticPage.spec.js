@@ -1,13 +1,13 @@
 import React from 'react';
 import { Routes, Route, } from 'react-router-dom';
 
-import Enzyme from 'enzyme';
+import { configure } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 import { mountWithRouter } from '../../reactTestHelpers';
-import { default as Pages } from '../../../src/pages';
+import StaticPage from '../../../src/pages/static';
 
-Enzyme.configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter() });
 
 describe('StaticPage component', () => {
     const pages = ['About', 'Commitments', 'News', 'Partners', 'Privacy', 'Staff', 'Terms'];
@@ -17,7 +17,7 @@ describe('StaticPage component', () => {
             const initialEntries = [`/${page.toLowerCase()}`];
             const wrapper = mountWithRouter(
                 <Routes>
-                    <Route exact path='/:pageType' element={<Pages.StaticPage />} />
+                    <Route exact path='/:pageType' element={<StaticPage />} />
                 </Routes>,
                 initialEntries
             );

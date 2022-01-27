@@ -5,7 +5,7 @@ import { fetchQuery, getTeam } from '../../../shared/graphql';
 
 export function* getClubTeam({ teamId, }) {
   try {
-    const variables = { teamId: teamId, };
+    const variables = { teamId, };
     const response = yield call(fetchQuery, getTeam, variables);
 
     if (response.data.errors) throw error;
@@ -15,10 +15,10 @@ export function* getClubTeam({ teamId, }) {
       response: response.data,
     });
   } catch (ex) {
-    const message = `Failed: -getTeam- ${ex.message}. `;
+    const message = 'Could not retrieve team.';
     yield put({
       type: onFailure(actionTypes.GET_TEAM),
-      errors: ex.data,
+      alertType: 'danger',
       message
     });
     yield put({

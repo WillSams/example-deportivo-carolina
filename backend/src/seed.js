@@ -46,7 +46,7 @@ const createFakePlayer = ({ team, position, }) => ({
 });
 
 let players = [];
-const forwardsCount = 6
+const forwardsCount = 6;
 const defendersCount = 5;
 const midfieldersCount = 6;
 const goaliesCount = 2;

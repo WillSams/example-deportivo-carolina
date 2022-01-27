@@ -1,4 +1,4 @@
-import { actionTypes, createPageReducer, onSuccessful } from "../../shared/base";
+import { actionTypes, createPageReducer, onSuccessful } from '../../shared/base';
 
 const initialState = {
   teamId: location?.pathname,
@@ -12,8 +12,8 @@ const actionHandlers = {
   [onSuccessful(actionTypes.GET_TEAM)]: (state, action) => {
     return {
       ...state,
-      teamId: action?.response?.data?.getTeam.Id,
-      team: action?.response?.data?.getTeam,
+      teamId: action?.response?.data?.team.Id,
+      team: action?.response?.data?.team,
       loading: false,
     };
   },
