@@ -6,7 +6,7 @@ A full-stack application using React, GraphQL, & AWS DynamoDb.
 ![text](frontend-2.png)
 ![text](frontend-3.png)
 
-TODO:
+## TODO
 
 - Write more backend tests.
 - Add token-based authentication.
