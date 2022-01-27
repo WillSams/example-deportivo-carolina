@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { default as StaticFragment } from './fragments';
 import { InvalidRoute } from '../../shared/components';
 
+
 const StaticPage = () => {
 
   let { pageType } = useParams();

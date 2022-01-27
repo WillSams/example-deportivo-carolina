@@ -1,14 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { NavLink, BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import { NavLink, BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
 
 import configureStore, { history } from '../../configureStore';
 
 import { InvalidRoute } from './';
 
 import { default as Pages } from '../../pages';
-
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const App = () => {
   return (

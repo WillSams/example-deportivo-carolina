@@ -39,16 +39,17 @@ const createFakePlayer = ({ team, position, }) => ({
     BirthDate: seeder.getFakeBirthdate(team.teamId),
     Height: seeder.getFakeHeight(team.teamId),
     Weight: seeder.getFakeWeight(team.teamId),
-    Jersey: seeder.getFakeJerseyNumber(),
-    Shoots: seeder.getShootingFoot(),
+    Jersey: seeder.getFakeJerseyNumber(position),
+    Shoots: seeder.getShootingFoot(position),
     Hometown: seeder.getFakeHomeTown()
   }
 });
 
 let players = [];
-let forwardsCount, defendersCount = 5;
-let midfieldersCount = 6;
-let goaliesCount = 2;
+const forwardsCount = 6;
+const defendersCount = 5;
+const midfieldersCount = 6;
+const goaliesCount = 2;
 teams.forEach(team => {
   for (let i = 0; i < forwardsCount; i++)
     players = players.concat([createFakePlayer({ team, position: 'F' })]);

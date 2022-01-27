@@ -2,6 +2,10 @@
 
 A full-stack application using React, GraphQL, & AWS DynamoDb.
 
+![text](frontend-1.png){ width=15%,height:5px }
+![text](frontend-2.png){ width=15%,height:5px }
+![text](frontend-3.png){ width=15%,height:5px }
+
 TODO:
 
 - Write frontend tests.

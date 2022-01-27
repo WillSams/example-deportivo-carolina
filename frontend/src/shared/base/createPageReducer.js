@@ -1,21 +1,17 @@
 export const createPageReducer = (pageName, initialState, actionHandlers) => {
-  actionHandlers[`LOAD_${pageName}`] = (state, action) => {
-    return {
-      ...state,
-      pageLoading: true,
-    };
-  };
+  actionHandlers[`LOAD_${pageName}`] = (state, action) => ({
+    ...state,
+    loading: true,
+  });
 
-  actionHandlers[`LOAD_${pageName}_SUCCESS`] = (state, action) => {
-    return {
-      ...state,
-      pageLoading: false,
-    };
-  };
+  actionHandlers[`LOAD_${pageName}_SUCCESS`] = (state, action) => ({
+    ...state,
+    loading: false,
+  });
 
   actionHandlers[`UNLOAD_${pageName}`] = (state, action) => ({
     ...initialState,
-    pageLoading: true,
+    loading: true,
   });
 
   return (
