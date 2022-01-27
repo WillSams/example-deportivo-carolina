@@ -13,13 +13,13 @@ chai.should();
 describe('Route - Queries - /api/graphql', () => {
   before(() => reseedDb());
 
-  it('`listTeamGames` query should retrieve games for a team', done => {
+  it('`teamGames` query should retrieve games for a team', done => {
     chai.request(bootstrap)
       .post('/api/graphql')
       .send({
         query: `
         query Query($teamId: String!) {
-          listTeamGames(teamId: $teamId) {
+          teamGames(teamId: $teamId) {
             Id
             Metadata
             GameDay
@@ -37,7 +37,7 @@ describe('Route - Queries - /api/graphql', () => {
 
         const data = res?.body?.data;
 
-        expect(data.listTeamGames.length).to.equal(2);
+        expect(data.teamGames.length).to.equal(2);
 
         done();
       });
