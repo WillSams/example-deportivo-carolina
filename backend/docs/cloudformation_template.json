@@ -123,7 +123,7 @@
         "ServiceNamespace": "dynamodb",
         "ResourceId": "table/Soccer",
         "ScalableDimension": "dynamodb:table:ReadCapacityUnits",
-        "PolicyName": "Soccer-read-capacity-scaling-policy",
+        "PolicyName": "Deportivo-read-capacity-scaling-policy",
         "PolicyType": "TargetTrackingScaling",
         "TargetTrackingScalingPolicyConfiguration": {
           "PredefinedMetricSpecification": {
@@ -156,7 +156,7 @@
         "ServiceNamespace": "dynamodb",
         "ResourceId": "table/Soccer",
         "ScalableDimension": "dynamodb:table:WriteCapacityUnits",
-        "PolicyName": "Soccer-write-capacity-scaling-policy",
+        "PolicyName": "Deportivo-write-capacity-scaling-policy",
         "PolicyType": "TargetTrackingScaling",
         "TargetTrackingScalingPolicyConfiguration": {
           "PredefinedMetricSpecification": {
@@ -189,7 +189,7 @@
         "ServiceNamespace": "dynamodb",
         "ResourceId": "table/Soccer/index/GameLogIndex",
         "ScalableDimension": "dynamodb:index:ReadCapacityUnits",
-        "PolicyName": "Soccer-index-GameLogIndex-read-capacity-scaling-policy",
+        "PolicyName": "Deportivo-index-GameLogIndex-read-capacity-scaling-policy",
         "PolicyType": "TargetTrackingScaling",
         "TargetTrackingScalingPolicyConfiguration": {
           "PredefinedMetricSpecification": {
@@ -222,7 +222,7 @@
         "ServiceNamespace": "dynamodb",
         "ResourceId": "table/Soccer/index/GameLogIndex",
         "ScalableDimension": "dynamodb:index:WriteCapacityUnits",
-        "PolicyName": "Soccer-index-GameLogIndex-write-capacity-scaling-policy",
+        "PolicyName": "Deportivo-index-GameLogIndex-write-capacity-scaling-policy",
         "PolicyType": "TargetTrackingScaling",
         "TargetTrackingScalingPolicyConfiguration": {
           "PredefinedMetricSpecification": {

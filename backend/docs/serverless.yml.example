@@ -4,7 +4,7 @@ service: deportivo-carolina-backend
 frameworkVersion: "3"
 
 custom:
-  tableName: "Soccer-${self:provider.stage}"
+  tableName: "Deportivo-${self:provider.stage}"
 
 provider:
   name: aws

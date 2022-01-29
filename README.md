@@ -2,6 +2,8 @@
 
 A full-stack application using React, GraphQL, & Amazon Web Services (API Gateway + Cloudfront + DynamoDb + Lambda + S3).
 
+Live Site -> 
+
 ![text](images/frontend-1.png)
 ![text](images/frontend-2.png)
 ![text](images/frontend-3.png)
@@ -62,31 +64,20 @@ cd backend && npm i && npm audit fix    # install the backend packages listed in
 cd frontend && npm i && npm audit fix   # install the frontend packages listed in package.json
 npm i && npm audit fix                  # install the root packages listed in package.json
 
+cp .envrc.example .envrc                # IMPORTANT! Edit file and set your environment variables in .envrc
+direnv allow                            # refreshes variables in your PATH
+
 serverless login                        # will open a browser, we'll need to be logged in for backend/frontend steps
 
 # BACKEND - Execute  the following commands in the backend folder:
-
-cp docs/.envrc.example .envrc                   # IMPORTANT! Edit file and set your environment variables in .envrc
-direnv allow                                    # refreshes variables in your PATH
-
-docker-compose up -d                            # Spin up the DynamoDb Docker container
-npm run seed                                    # create and seed the Soccer-development table
-
 cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' in severless.yml
-
-serverless plugin install -n serverless-offline # Install the plugin to simulate AWS Lambda and API Gateway locally  
-serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.       
-
+serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com. 
+#Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 
 # FRONTEND - Execute  the following commands in the frontend folder:
-cp docs/.envrc.example .envrc                   # IMPORTANT! Edit file and set your environment variables in .envrc
-direnv allow                                    # refreshes variables in your PATH
-
-docker-compose up -d                            # Spin up the DynamoDb Docker container
-npm run seed                                    # create and seed the Soccer-development table
-
-cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' in severless.yml 
-serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.       
+cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' in severless.yml
+serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.   
+#Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 ```
 
 ### Getting Both Backend/Frontend Started
@@ -96,6 +87,8 @@ If the steps in `Getting Both Backend/Frontend Configured` have been satisifed, 
 ```bash
 docker-compose pull   # pull the DynamoDB Docker container
 docker-compose up -d  # Execute the Docker container
+
+npm run seed          # create and seed the Soccer-development table
 npm run dev           # concurrently starts both the frontend web site and backend api.
 ```
 
@@ -105,12 +98,22 @@ Two ways to do it:
 
 ### Deploy to staging once pull request is merged
 
+Running the following command in root path will deploy both backend and frontend to staging.  Alternatively, to only do either, just execute it in either the `backend` or `frontend` folder. However, the preferred way is to let CircleCI do this after merging your pull requests into the master branch.
+
 _TODO_:  Need to complete tasks in `ci/add-continious-integration-and-deployment` branch.
+
+```bash
+npm run deploy
+```
 
 ### Deploy manually
 
-Deploy to whatever environment (staging, production) by executing (replace `ENVIRONMENT` with desired):
+Deploy any branch to whatever environment (staging, production) by executing (replace `ENVIRONMENT` with desired):
 
 ```bash
 serverless deploy --stage ENVIRONMENT
 ```
+
+### Deploying to Production
+
+_TODO_: Test the preferred way to do for this repo.

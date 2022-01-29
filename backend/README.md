@@ -21,10 +21,12 @@ _TODO_:
 # Getting API details
 curl -X GET \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer $TOKEN_SECRET" \
 http://localhost:4040/api/about
 
-# The result should be the screen shot above.
+# The result should resemble:
+# {"name":"deportivo-carolina-backend","version":"0.9.7","description":"Example API using GraphQL and AWS DynamoDB SDK.","environment":"development"}
+
+# If visiting http://localhost:4040/api/about in a web browser, the result should resemble the screen shot above.
 
 # Creating a team
 curl -X POST \
@@ -58,10 +60,10 @@ http://localhost:4040/api/graphql
 # Getting API details
 curl -X GET \
 -H "Content-Type: application/json" \
--H "Authorization: Bearer $TOKEN_SECRET" \
 https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/api/about
 
-# The result should be the screen shot above.
+# The result should resemble:
+# {"name":"deportivo-carolina-backend","version":"0.9.7","description":"Example API using GraphQL and AWS DynamoDB SDK.","environment":"development"}
 
 # Creating a team
 curl -X POST \
