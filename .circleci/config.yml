@@ -31,15 +31,18 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "frontend/package.json" }}
       - run:
-          name: "NPM install root"
+          name: "Install root"
           working_directory: ~/code
           command: npm ci
       - run:
-          name: "NPM install backend"
+          name: "Install backend"
           working_directory: ~/code/backend
-          command: npm ci
+          command: |
+            chmod +x clean-db.sh
+            sudo apt-get update && sudo apt-get install -y awscli
+            npm ci
       - run:
-          name: "NPM install frontend"
+          name: "Install frontend"
           working_directory: ~/code/frontend
           command: npm ci
       - save_cache:
@@ -93,7 +96,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/code
-      - run: sudo apt-get install awscli
+      - run: sudo apt-get update && sudo apt-get install -y awscli
       - run: sudo npm i -g serverless
       - run: npm run deploy
 workflows:
