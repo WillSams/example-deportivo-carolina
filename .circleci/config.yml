@@ -38,8 +38,6 @@ jobs:
           name: "Install backend"
           working_directory: ~/code/backend
           command: |
-            chmod +x clean-db.sh
-            sudo apt-get update && sudo apt-get install -y awscli
             npm ci
       - run:
           name: "Install frontend"
@@ -96,9 +94,12 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/code
-      - run: sudo apt-get update && sudo apt-get install -y awscli
-      - run: sudo npm i -g serverless
-      - run: npm run deploy
+      - run: |
+          chmod +x backend/clean-db.sh
+          sudo apt-get update && sudo apt-get install -y python-pip 
+          sudo pip install awscli
+          sudo npm i -g serverless
+          npm run deploy
 workflows:
   version: 2
   build_and_test:
