@@ -18,7 +18,7 @@ NOTE: Alternatively, if you rather use the [AWS NoSql Workbench](https://docs.aw
 # Note: table was created using the model data
 aws dynamodb describe-table \
   --endpoint-url http://localhost:8042 \
-  --table-name Soccer-development \
+  --table-name Deportivo-development \
   --profile localhost-user \
   --region localhost
 ```
@@ -30,7 +30,7 @@ aws dynamodb describe-table \
 # Quering Local DynamoDB container
 aws dynamodb query \
   --endpoint-url http://localhost:8042 \
-  --table-name Soccer-development \
+  --table-name Deportivo-development \
   --index-name 'MetadataIndex' \
   --projection-expression 'Metadata, TeamName, Arena' \
   --key-condition-expression "Metadata = :v1" \

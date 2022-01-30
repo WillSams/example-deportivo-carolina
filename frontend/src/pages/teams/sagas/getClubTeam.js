@@ -8,7 +8,7 @@ export function* getClubTeam({ teamId, }) {
     const variables = { teamId, };
     const response = yield call(fetchQuery, getTeam, variables);
 
-    if (response.data.errors) throw error;
+    if (response.data.errors) throw new Error('getClubTeam-saga-error');
 
     yield put({
       type: onSuccessful(actionTypes.GET_TEAM),

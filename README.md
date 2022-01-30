@@ -70,12 +70,12 @@ direnv allow                            # refreshes variables in your PATH
 serverless login                        # will open a browser, we'll need to be logged in for backend/frontend steps
 
 # BACKEND - Execute  the following commands in the backend folder:
-cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' in severless.yml
+cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your TOKEN_SECRET
 serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com. 
 #Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 
 # FRONTEND - Execute  the following commands in the frontend folder:
-cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' in severless.yml
+cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your TOKEN_SECRET
 serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.   
 #Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 ```
@@ -88,7 +88,7 @@ If the steps in `Getting Both Backend/Frontend Configured` have been satisifed, 
 docker-compose pull   # pull the DynamoDB Docker container
 docker-compose up -d  # Execute the Docker container
 
-npm run seed          # create and seed the Soccer-development table
+npm run seed          # create and seed the Deportivo-development table
 npm run dev           # concurrently starts both the frontend web site and backend api.
 ```
 

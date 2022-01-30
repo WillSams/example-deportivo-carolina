@@ -19,7 +19,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "deploy": "serverless deploy --stage staging ",
+    "deploy": "serverless deploy --stage staging",
     "dev": "serverless offline start --httpPort 4040 --region localhost",
     "seed": "NODE_ENV=development ./clean_db.sh && node src/seed.js",
     "test": "NODE_ENV=test ./clean_db.sh && mocha specs/**/*.spec.js --recursive --timeout 10000"

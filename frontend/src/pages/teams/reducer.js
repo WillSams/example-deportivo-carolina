@@ -1,10 +1,8 @@
 import { actionTypes, createPageReducer, onSuccessful } from '../../shared/base';
 
 const initialState = {
-  teamId: location?.pathname,
+  teamId: '',
   team: {},
-  history,
-  location,
   loading: true,
 };
 
