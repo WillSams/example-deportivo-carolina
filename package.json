@@ -3,8 +3,8 @@
   "version": "0.7.5",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "direnv allow && concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\"",
-    "deploy": "direnv allow && concurrently \"cd frontend && npm run deploy\" \"cd backend && npm run deploy\"",
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\"",
+    "deploy": "concurrently \"cd frontend && npm run deploy\" \"cd backend && npm run deploy\"",
     "lint": "eslint backend --ignore-pattern 'public/' && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'dist/'",
     "lint-fix": "eslint backend --ignore-pattern 'public/' --fix && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'dist/' --fix",
     "seed": "cd backend && npm run seed"
