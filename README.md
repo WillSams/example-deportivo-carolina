@@ -13,8 +13,7 @@ For a KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
 
 ## TODO
 
-- Add token-based authentication.
-- Add CI/CD w/ CircleCI.
+- Better implement token-based authentication.
 - Add data importer.
 
 ### Backend
@@ -114,7 +113,3 @@ Deploy any branch to whatever environment (staging, production) by executing (re
 ```bash
 serverless deploy --stage ENVIRONMENT
 ```
-
-### Deploying to Production
-
-_TODO_: Test the preferred way to do for this repo.
