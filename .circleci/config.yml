@@ -34,8 +34,8 @@ jobs:
           name: "Install root"
           working_directory: ~/code
           command: |
-            sudo apt-get update && sudo apt-get install -y direnv python3-pip 
-            direnv allow
+            # Note: add your necessary environment variables at app.circleci.com
+            sudo apt-get update && sudo apt-get install -y python3-pip 
             sudo pip install awscli
             sudo npm i -g serverless
             npm ci
