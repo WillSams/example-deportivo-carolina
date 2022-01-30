@@ -20,6 +20,7 @@ For a KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
 ### Backend
 
 - Write more tests.
+- Use Passport package to authorize the token.
 - Add delete mutations
 - Utilize different types other than strings
 
@@ -75,7 +76,7 @@ serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/serv
 #Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 
 # FRONTEND - Execute  the following commands in the frontend folder:
-cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your TOKEN_SECRET
+cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your REACT_APP_TOKEN_SECRET
 serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.   
 #Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 ```
