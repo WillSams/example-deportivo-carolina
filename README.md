@@ -2,8 +2,6 @@
 
 A full-stack application using React, GraphQL, & Amazon Web Services (API Gateway + Cloudfront + DynamoDb + Lambda + S3).
 
-Live Site -> 
-
 ![text](images/frontend-1.png)
 ![text](images/frontend-2.png)
 ![text](images/frontend-3.png)
