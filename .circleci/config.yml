@@ -34,7 +34,8 @@ jobs:
           name: "Install root"
           working_directory: ~/code
           command: |
-            sudo apt-get update && sudo apt-get install -y python-pip 
+            sudo apt-get update && sudo apt-get install -y direnv python3-pip 
+            direnv allow
             sudo pip install awscli
             sudo npm i -g serverless
             npm ci
@@ -42,7 +43,7 @@ jobs:
           name: "Install backend"
           working_directory: ~/code/backend
           command: |
-            chmod +x backend/clean-db.sh
+            chmod +x clean_db.sh
             npm ci
       - run:
           name: "Install frontend"
