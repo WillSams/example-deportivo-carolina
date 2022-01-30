@@ -5,13 +5,12 @@ export NODE_ENV=development
 # locally.  Deployed to AWS, the SOCCER_TABLE declared in serverless.yml will be used.
 export TABLE_NAME=Deportivo-${NODE_ENV}
 
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export AWS_REGION=localhost
-
 export DYNAMODB_PORT=8042
 
-export API_URL=http://localhost:${API_PORT}
-export REACT_APP_API_URL=${API_URL}
+# these will only impact your local connection.  The Serverless 
+# defaults to the credentials of the AWS provider connected to it.
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+export AWS_REGION=
 
 export TOKEN_SECRET=

@@ -1,7 +1,7 @@
 version: "3"
 services:
   database:
-    container_name: deportivo-db
+    container_name: deportivo-carolina-db
     image: amazon/dynamodb-local
     ports:
       - "${DYNAMODB_PORT}:8000"

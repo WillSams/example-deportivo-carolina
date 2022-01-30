@@ -82,7 +82,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-# .env  <---- may reference environment variables in Deportivo Carolina's .envrc exports
+#.env                   <- we are going to need this for our AWS deploys
 .env.development.local
 .env.test.local
 .env.production.local
@@ -117,8 +117,9 @@ dist
 # Docusaurus cache and generated files
 .docusaurus
 
-# Serverless directories
+# Serverless 
 .serverless/
+serverless.yml          
 
 # FuseBox cache
 .fusebox/
@@ -140,9 +141,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-# Package lock
-package-lock.json
 
 test-results/
 

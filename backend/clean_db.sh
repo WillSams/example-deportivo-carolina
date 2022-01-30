@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TABLE_NAME=Soccer-test
+TABLE_NAME=Deportivo-${NODE_ENV}
 
 # Delete table if it already exists
 aws dynamodb delete-table \

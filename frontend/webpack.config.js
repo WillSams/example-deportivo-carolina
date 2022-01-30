@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const port = process.env.SITE_PORT || 3000;
@@ -8,6 +10,14 @@ module.exports = () => {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       favicon: 'public/img/favicon.ico'
+    }),
+    // We are only using Webpack for local development, so we need to inject the
+    // environment variables since we aren't using Serverless framework to do it
+    new webpack.DefinePlugin({
+      'process.env': {
+        'REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL),
+        'REACT_APP_TOKEN_SECRET': JSON.stringify(process.env.REACT_APP_TOKEN_SECRET),
+      },
     }),
   ];
 

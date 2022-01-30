@@ -5,19 +5,14 @@ import { actionTypes } from './actionTypes';
 
 let instance = null;
 
-const errorMessages404 = [
-  'Argument "id" has invalid value $id.',
-  'document_download_request_not_found',
-  'form_not_found',
-  'payment_not_found',
-];
-
 export const createBaseApi = store => {
+  // not the way we should be doing token authorization, this is just a placeholder
   instance = axios.create({
-    baseURL: 'http://localhost:4040/api',
+    baseURL: `${process.env.REACT_APP_API_URL}/api`,
     headers: {
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest',
+      'Authorization': `Bearer ${process.env.REACT_APP_TOKEN_SECRET} `,
     },
   });
 
@@ -42,13 +37,6 @@ export const createBaseApi = store => {
       store.dispatch({ type: actionTypes.API_REQUEST_DONE, });
 
       if (response.data.errors) {
-        const missingResourceErrors = _.filter(response.data.errors, error =>
-          _.includes(errorMessages404, error.message)
-        );
-
-        if (missingResourceErrors.length > 0)
-          return store.dispatch({ type: actionTypes.API_REQUEST_NOT_FOUND, });
-
         store.dispatch({
           type: actionTypes.API_REQUEST_ERROR,
           error: response.data.errors,

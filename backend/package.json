@@ -1,10 +1,11 @@
 {
-  "name": "backend-graphql-api",
-  "version": "0.9.5",
+  "name": "deportivo-carolina-backend",
+  "version": "0.9.7",
   "description": "Example API using GraphQL and AWS DynamoDB SDK.",
   "main": "bootstrap.js",
   "dependencies": {
     "apollo-server-core": "^3.6.1",
+    "apollo-server-errors": "^3.3.1",
     "apollo-server-express": "^3.6.1",
     "aws-sdk": "^2.1054.0",
     "bcrypt": "^5.0.1",
@@ -14,16 +15,14 @@
     "graphql": "^15.8.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
+    "serverless-http": "^2.7.0",
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "start": "node src/bootstrap.js",
-    "test": "NODE_ENV=test ./specs/clean_db.sh && mocha specs/**/*.spec.js --recursive --timeout 10000",
-    "debug": "node --inspect-brk=0.0.0.0:9229 src/bootstrap.js",
-    "dev": "nodemon src/bootstrap.js",
-    "lint": "eslint . --ignore-pattern 'public/'",
-    "lint-fix": "eslint src/**/*.js --fix",
-    "seed": "node src/seed.js"
+    "deploy": "serverless deploy --stage staging",
+    "dev": "serverless offline start --httpPort 4040 --region localhost",
+    "seed": "NODE_ENV=development ./clean_db.sh && node src/seed.js",
+    "test": "NODE_ENV=test ./clean_db.sh && mocha specs/**/*.spec.js --recursive --timeout 10000"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +33,8 @@
     "faker": "^4.1.0",
     "mocha": "^9.1.4",
     "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "serverless-offline": "^8.3.1",
     "sleep": "^6.3.0"
   }
 }
