@@ -58,9 +58,9 @@ This can be done by executing the following:
 nvm use                                 # use the version of NodeJS listed in .nvmrc
 npm i -g serverless                     # installs Serverless globally to your lts/fermium install
 
-cd backend && npm i && npm audit fix    # install the backend packages listed in package.json
-cd frontend && npm i && npm audit fix   # install the frontend packages listed in package.json
-npm i && npm audit fix                  # install the root packages listed in package.json
+cd backend && npm i && npm audit fix                # install the backend packages listed in package.json
+cd frontend && npm i && npm audit fix --production  # install the frontend packages listed in package.json
+npm i && npm audit fix                              # install the root packages listed in package.json
 
 cp .envrc.example .envrc                # IMPORTANT! Edit file and set your environment variables in .envrc
 direnv allow                            # refreshes variables in your PATH
