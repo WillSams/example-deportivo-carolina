@@ -53,7 +53,7 @@ module.exports = () => {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/',   // make direct links work
+      publicPath: '/',
       filename: '[name].js',
     },
     devtool: 'inline-source-map',
