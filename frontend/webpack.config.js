@@ -52,7 +52,7 @@ module.exports = () => {
     plugins,
     entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'build'),
       publicPath: '/',   // make direct links work
       filename: '[name].js',
     },
