@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run pre-build && webpack",
     "deploy": "npm run build && serverless deploy --stage staging",
-    "dev": "webpack-dev-server --mode development --config webpack.redo.config.js",
+    "dev": "webpack-dev-server --mode development",
     "lint": "eslint . --ignore-pattern 'public/' --ignore-pattern 'build/'",
     "lint-fix": "eslint . --ignore-pattern 'public/'  --ignore-pattern 'build/' --fix",
     "pre-build": "chmod +x prebuild.sh && ./prebuild.sh",
