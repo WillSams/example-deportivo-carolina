@@ -37,19 +37,19 @@ describe('Route - Mutations - /api/graphql', () => {
 
         res.headers['content-type'].should.contains('application/json');
 
-        const data = res?.body?.data;
+        const result = res?.body?.data?.createTeam;
 
-        data.createTeam.should.have.property('Id');
-        expect(data.createTeam.Id).to.equal(createTeamInput.teamId);
+        result.should.have.property('Id');
+        expect(result.Id).to.equal(createTeamInput.teamId);
 
-        data.createTeam.should.have.property('Metadata');
-        expect(data.createTeam.Metadata).to.equal('Team');
+        result.should.have.property('Metadata');
+        expect(result.Metadata).to.equal('Team');
 
-        data.createTeam.should.have.property('TeamName');
-        expect(data.createTeam.TeamName).to.equal(createTeamInput.teamName);
+        result.should.have.property('TeamName');
+        expect(result.TeamName).to.equal(createTeamInput.teamName);
 
-        data.createTeam.should.have.property('Arena');
-        expect(data.createTeam.Arena).to.equal(createTeamInput.arena);
+        result.should.have.property('Arena');
+        expect(result.Arena).to.equal(createTeamInput.arena);
 
         done();
       });

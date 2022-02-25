@@ -2,7 +2,7 @@ const { dbGet, dbQuery } = require('../../utils/responses');
 const { Game, Player, Team } = require('../../models');
 
 const teams = async () =>
-  await dbQuery({ query: Team.queryAll })
+  await dbQuery({ query: Team.queryAll() })
     .then(data => data);
 
 const teamPlayers = async (root, { teamId }) =>
@@ -24,8 +24,8 @@ const player = async (root, { teamId, playerId }) =>
 const team = async (root, { teamId }) =>
   await dbGet({ query: Team.get({ teamId }) })
     .then(async data => {
-      const players = await teamPlayers(root, { teamId });
-      const games = await teamGames(root, { teamId });
+      const players = teamPlayers(root, { teamId }).then(data => data);
+      const games = teamGames(root, { teamId }).then(data = data);
       return Object.assign(data, { Players: players, Games: games });
     });
 
