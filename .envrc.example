@@ -1,15 +1,11 @@
 export NODE_ENV=development
 
-# Since I'm hell bent on calling first deployed environment 'staging' instead
-# of Serverless' desire to call it 'dev', this TABLE_NAME var is only checked
-# locally.  Deployed to AWS, the SOCCER_TABLE declared in serverless.yml will be used.
-export TABLE_NAME=Deportivo-${NODE_ENV}
+export SOCCER_TABLE=Deportivo-${NODE_ENV}
+export DYNAMODB_PORT=8042
 
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 export AWS_REGION=localhost
-
-export DYNAMODB_PORT=8042
 
 export API_URL=http://localhost:${API_PORT}
 export REACT_APP_API_URL=${API_URL}
