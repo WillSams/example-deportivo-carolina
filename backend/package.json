@@ -4,7 +4,7 @@
   "description": "Example API using GraphQL and AWS DynamoDB SDK.",
   "main": "bootstrap.js",
   "dependencies": {
-    "apollo-server-core": "^3.6.1",
+    "apollo-server-core": "^3.10.1",
     "apollo-server-errors": "^3.3.1",
     "apollo-server-express": "^3.6.1",
     "aws-sdk": "^2.1054.0",
