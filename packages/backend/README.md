@@ -2,8 +2,8 @@
 
 Serverless Example API using a Apollo Server, and AWS (API Gateway + DynamoDb + Lambda).
 
-![text](../images/api-1.png)
-![text](../images/api-2.png)
+![text](../../images/api-1.png)
+![text](../../images/api-2.png)
 
 _TODO_:
 
@@ -15,7 +15,7 @@ _TODO_:
 
 ### Offline
 
-![text](../images/api-2.png)
+![text](../../images/api-2.png)
 
 ```bash
 # Getting API details
