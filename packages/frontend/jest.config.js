@@ -22,7 +22,10 @@ module.exports = {
     'default',
     [
       'jest-junit',
-      { outputDirectory: './specs/test-results/jest/', outputName: 'results.xml' },
+      {
+        outputDirectory: './specs/test-results/jest/',
+        outputName: 'results.xml',
+      },
     ],
   ],
 
