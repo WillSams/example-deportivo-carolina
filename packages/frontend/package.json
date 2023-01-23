@@ -11,9 +11,6 @@
     "pre-build": "chmod +x prebuild.sh && ./prebuild.sh",
     "test": "jest --maxWorkers=2"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",

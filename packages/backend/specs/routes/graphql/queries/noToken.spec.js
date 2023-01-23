@@ -11,7 +11,7 @@ describe('Route - Queries - /api/graphql', () => {
   it('should not allow Graphql queries without authorization', done => {
     chai.request(bootstrap)
       .post('/api/graphql')
-      .set({ "Authorization": '' })
+      .set({ 'Authorization': '' })
       .send({ query: '{ team(teamId: "test-team-1") { Id Metadata TeamName Arena } }' })
       .end((err, res) => {
         if (err) return done(err);

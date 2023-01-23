@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 const useLoadPage = ({ props, config }) => {
   const loads = config?.load;
 
-  console.log(props)
+  console.log(props);
 
   useEffect(() => {
     const dispatch = props.getDispatch?.();
