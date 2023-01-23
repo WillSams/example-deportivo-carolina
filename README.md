@@ -64,11 +64,14 @@ direnv allow                            # refreshes variables in your PATH
 serverless login                        # will open a browser, we'll need to be logged in for backend/frontend steps
 
 # BACKEND - Execute  the following commands in the backend folder:
+PROJECT_ROOT=$(pwd)                     
+cd $PROJECT_ROOT/packages/backend
 cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your TOKEN_SECRET
 serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com. 
 #Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
 
 # FRONTEND - Execute  the following commands in the frontend folder:
+cd $PROJECT_ROOT/packages/frontend
 cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your REACT_APP_TOKEN_SECRET
 serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.   
 #Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
