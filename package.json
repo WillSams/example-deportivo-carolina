@@ -4,7 +4,6 @@
   "license": "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
   "scripts": {
     "bootstrap": "npx --yes lerna@^5.6.2 bootstrap",
-    "bootstrap-hoist": "lerna bootstrap --hoist",
     "deploy": "concurrently \"npm run deploy:backend\" \"npm run deploy:frontend\"",
     "deploy:backend": "lerna run deploy --scope=backend",
     "deploy:frontend": "lerna run deploy --scope=frontend",
