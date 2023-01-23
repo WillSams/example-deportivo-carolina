@@ -37,5 +37,5 @@ jobs:
     - name: Install NPM dependencies
       run: npm i -g lerna && npm run bootstrap
     - name: Deploy Lambda functions
-      run: sls deploy -s staging
+      run: npm run deploy
 
