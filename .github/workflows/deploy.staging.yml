@@ -12,7 +12,7 @@
 name: Deploy Staging
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   deploy-dev:
