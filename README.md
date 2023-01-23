@@ -112,6 +112,7 @@ Deploy any branch to whatever environment (staging, production) by executing (re
 ```bash
 serverless deploy --stage ENVIRONMENT
 ```
+Also, deployments to staging will occur when PRs are merged into master.  Take a look at the [GitHub action](.github/workflows/deploy.staging.yml) to see how this is done.
 
 ## TODO
 
