@@ -21,9 +21,9 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
+        node-version: '18.x'
     - name: Install Serverless Framework
-      run: npm install -g serverless
+      run: npm i -g serverless
     - name: Serverless AWS authentication
       run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
     - name: Create Serverless Backend Config
@@ -37,7 +37,7 @@ jobs:
         ${{ secrets.FRONTENDYML }}
         EOF
     - name: Install NPM dependencies
-      run: npm run bootstrap
+      run: npm i -g lerna && npm run bootstrap
     - name: Deploy Lambda functions
       run: sls deploy -s staging
 
