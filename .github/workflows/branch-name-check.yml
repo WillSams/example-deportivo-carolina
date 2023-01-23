@@ -17,8 +17,7 @@ jobs:
               const gitFlowFormat = /(feat\W|feature\/|fix\/|chore\/|refactor\/)/
               if (!gitFlowFormat.test(currentBranch)) {
                 core.setFailed(
-                  `Branch names in PRs should use Gitflow. e.g. (feat, fix, chore, refactor).  Please do an interactive rebase to fix this issue. ` +
-                )
+                  `Branch names in PRs should use Gitflow. e.g. (feat, fix, chore, refactor).  Please do an interactive rebase to fix this issue. `)
               }
             }
             const currentBranch = context.payload.pull_request.head.ref
