@@ -8,7 +8,7 @@
     "deploy:backend": "lerna run deploy --scope=backend",
     "deploy:frontend": "lerna run deploy --scope=frontend",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "lerna run dev--scope=backend",
+    "dev:backend": "lerna run dev --scope=backend",
     "dev:frontend": "lerna run dev --scope=frontend",
     "lint": "eslint packages/backend --ignore-pattern 'public/' && eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'dist/'",
     "prepare": "husky install",
