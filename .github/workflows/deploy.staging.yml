@@ -31,7 +31,7 @@ jobs:
         EOF
     - name: Create Serverless Frontend Config
       run: |
-        cat > packages/backend/serverless.yml << EOF
+        cat > packages/frontend/serverless.yml << EOF
         ${{ secrets.FRONTENDYML }}
         EOF
     - name: Install NPM dependencies
