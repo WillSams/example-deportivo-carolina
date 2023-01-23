@@ -1,35 +1,44 @@
 {
   "name": "deportivocarolina",
   "version": "0.7.5",
-  "license": "UNLICENSED",
+  "license": "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
   "scripts": {
-    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev\"",
-    "deploy": "concurrently \"cd frontend && npm run deploy\" \"cd backend && npm run deploy\"",
-    "lint": "eslint backend --ignore-pattern 'public/' && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'dist/'",
-    "lint-fix": "eslint backend --ignore-pattern 'public/' --fix && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'dist/' --fix",
-    "seed": "cd backend && npm run seed"
+    "bootstrap": "npx --yes lerna@^5.6.2 bootstrap",
+    "deploy": "concurrently \"npm run deploy:backend\" \"npm run deploy:frontend\"",
+    "deploy:backend": "lerna run deploy --scope=backend",
+    "deploy:frontend": "lerna run deploy --scope=frontend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "lerna run dev--scope=backend",
+    "dev:frontend": "lerna run dev --scope=frontend",
+    "lint": "eslint packages/backend --ignore-pattern 'public/' && eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'dist/'",
+    "prepare": "husky install",
+    "seed": "lerna run seed --scope=backend",
+    "test:backend": "lerna run test --scope=backend",
+    "test:frontend": "lerna run test --scope=frontend"
+  },
+  "dependencies": {
+    "concurrently": "^6.5.1"
   },
   "devDependencies": {
     "eslint": "^7.26.0",
     "husky": "^6.0.0",
+    "lerna": "^5.6.2",
+    "nx": "^14.7.8",
     "prettier": "^2.5.1"
   },
   "lint-staged": {
-    "*.{js,ts}": [
+    "*.{js}": [
       "prettier --single-quote --trailing-comma es5 --write",
-      "git add"
+      "eslint packages/backend --ignore-pattern 'public/' --fix",
+      "eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'dist/' --fix",
+      "npm run test:backend",
+      "npm run test:frontend",
+      "cd .. && git add ."
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "dependencies": {
-    "concurrently": "^6.5.1"
-  }
+  "workspaces": [ "packages/*" ]
 }
