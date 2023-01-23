@@ -1,5 +1,7 @@
 # Example Site - Deportivo de Carolina Fútbol Club
 
+[![Deploy Staging](https://github.com/WillSams/example-soccer-association/actions/workflows/deploy.staging.yml/badge.svg)](https://github.com/WillSams/example-soccer-association/actions/workflows/deploy.staging.yml)
+
 A full-stack application using React, GraphQL, & Amazon Web Services (API Gateway + Cloudfront + DynamoDb + Lambda + S3).
 
 ![text](images/frontend-1.png)
