@@ -9,23 +9,6 @@ A full-stack application using React, GraphQL, & Amazon Web Services (API Gatewa
 
 For a KeystoneJS 4.0 example abandoned March 2019, see the `abandoned` branch.
 
-## TODO
-
-- Better implement token-based authentication.
-- Add data importer.
-
-### Backend
-
-- Write more tests.
-- Use Passport package to authorize the token.
-- Add delete mutations
-- Utilize different types other than strings
-
-### Frontend
-
-- Write more tests.
-- Add content editor components for home, news, teams, and static.
-
 ## Pre-requisites
 
 First of all, these instructions will only be targeting Debian-based distros (Ubuntu, Linux Mint, etc.) but they can also work under [Windows using the Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about).  The following tools need to be installed:
@@ -83,31 +66,47 @@ serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/serv
 If the steps in `Getting Both Backend/Frontend Configured` have been satisifed, back in the root of the repository execute the following:
 
 ```bash
-docker-compose pull   # pull the DynamoDB Docker container
-docker-compose up -d  # Execute the Docker container
+docker-compose pull     # pull the DynamoDB Docker container
+docker-compose up -d    # Execute the Docker container
 
-npm run seed          # create and seed the Deportivo-development table
-npm run dev           # concurrently starts both the frontend web site and backend api.
+npm run backend:seed    # create and seed the Deportivo-development table
+npm run dev             # concurrently starts both the frontend web site and backend api.
 ```
 
-## Deploying To Amazon Web Services
+## Testing
 
-Two ways to do it:
-
-### Deploy to staging once pull request is merged
-
-Running the following command in root path will deploy both backend and frontend to staging.  Alternatively, to only do either, just execute it in either the `backend` or `frontend` folder. However, the preferred way is to let CircleCI do this after merging your pull requests into the master branch.
-
-_TODO_:  Need to complete tasks in `ci/add-continious-integration-and-deployment` branch.
+Before running tests, make sure you have the DynamoDB Docker container running by execute `docker-compose up -d` in the root of the repository.  The backend tests require use of the DynamoDB Docker container, so you'll also need to add dummy credentials to your `~/.aws/credentials` file.  You can just perform the following to do so:
 
 ```bash
-npm run deploy
+echo "
+[localhost-user]
+aws_access_key_id = 
+aws_secret_access_key = 
+" >> ~/.aws/credentials
 ```
 
-### Deploy manually
+Then to perform tests on the backend, execute `npm run test:backend`.  To perform tests on the frontend, execute `npm run test:frontend`.  Both steps should be performed in the root of the repository.
+
+## Deploying To Amazon Web Services
 
 Deploy any branch to whatever environment (staging, production) by executing (replace `ENVIRONMENT` with desired):
 
 ```bash
 serverless deploy --stage ENVIRONMENT
 ```
+
+## TODO
+
+### Backend
+
+- Improve tests.
+- Update type defs to use GraphQL types.
+- Implement an aunthentication shield for the GraphQL API.
+- Implement a GraphQL subscription for the news feed.
+- Implement a GraphQL subscription for the team feed.
+- Add additional mutations.
+
+### Frontend
+
+- Improve tests.
+- Add content editor components for home, news, teams, and static.
