@@ -1,6 +1,7 @@
 # Description: Deploy backend/frontend to Staging environment When PR is merged to main branch
 
 # Pre-requisites:
+# - Create SERVERLESS_ACCESS_KEY secret, create/retrieve from https://app.serverless.com/<your_account>/settings/accessKeys
 # - Create AWS_KEY and AWS_SECRET secrets in Github repository settings
 # - Create BACKENDYML and FRONTENDYML secrets in Github repository settings.  Just copy the 
 #     contents of the serverless.yml files for each package.
