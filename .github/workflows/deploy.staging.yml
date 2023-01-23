@@ -6,12 +6,10 @@
 #     contents of the serverless.yml files for each package.
 #
 # Learn more: https://maxkostinevich.com/blog/how-to-deploy-serverless-applications-using-github-actions/
-#
-
 
 name: Deploy Staging
 on:
-  pull_request:
+  push:
     branches: [ master ]
 
 jobs:
