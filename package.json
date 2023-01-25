@@ -7,14 +7,17 @@
     "deploy": "concurrently \"npm run deploy:backend\" \"npm run deploy:frontend\"",
     "deploy:backend": "lerna run deploy --scope=backend",
     "deploy:frontend": "lerna run deploy --scope=frontend",
+    "deploy:importer": "lerna run deploy --scope=importer",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "lerna run dev --scope=backend",
     "dev:frontend": "lerna run dev --scope=frontend",
-    "lint": "eslint packages/backend --ignore-pattern 'public/' && eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'build/'",
+    "dev:importer": "lerna run dev --scope=importer",
+    "lint": "eslint packages/* --ignore-pattern 'public/' --ignore-pattern 'build/' --ignore-pattern 'node_modules/'",
     "prepare": "husky install",
     "seed": "lerna run seed --scope=backend",
     "test:backend": "lerna run test --scope=backend",
-    "test:frontend": "lerna run test --scope=frontend"
+    "test:frontend": "lerna run test --scope=frontend",
+    "test:importer": "lerna run test --scope=importer"
   },
   "dependencies": {
     "concurrently": "^6.5.1"

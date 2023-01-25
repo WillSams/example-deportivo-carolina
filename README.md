@@ -112,7 +112,12 @@ Deploy any branch to whatever environment (staging, production) by executing (re
 ```bash
 serverless deploy --stage ENVIRONMENT
 ```
+
 Also, deployments to staging will occur when PRs are merged into master.  Take a look at the [GitHub action](.github/workflows/deploy.staging.yml) to see how this is done.
+
+## Clubs File Importer
+
+The clubs file importer is a AWS SQS Lambda that can be used to import soccer clubs from JSON files.  To learn more about the teams importer, view the [README](./packages/importer/README.md).
 
 ## TODO
 

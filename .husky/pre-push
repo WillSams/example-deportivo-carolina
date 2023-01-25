@@ -3,3 +3,4 @@
 
 npm run test:backend
 npm run test:frontend
+npm run test:importer

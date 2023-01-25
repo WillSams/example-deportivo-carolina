@@ -3,6 +3,12 @@
   "version": "0.9.7",
   "description": "Example API using GraphQL and AWS DynamoDB SDK.",
   "main": "bootstrap.js",
+  "scripts": {
+    "deploy": "serverless deploy --stage staging",
+    "dev": "serverless offline start --httpPort 4040 --region localhost",
+    "seed": "NODE_ENV=development ./clean_db.sh && node src/seed.js",
+    "test": "NODE_ENV=test ./clean_db.sh && mocha specs/**/*.spec.js --recursive --timeout 10000"
+  },
   "dependencies": {
     "apollo-server-core": "^3.6.1",
     "apollo-server-errors": "^3.3.1",
@@ -18,14 +24,6 @@
     "serverless-http": "^2.7.0",
     "uuid": "^8.3.2"
   },
-  "scripts": {
-    "deploy": "serverless deploy --stage staging",
-    "dev": "serverless offline start --httpPort 4040 --region localhost",
-    "seed": "NODE_ENV=development ./clean_db.sh && node src/seed.js",
-    "test": "NODE_ENV=test ./clean_db.sh && mocha specs/**/*.spec.js --recursive --timeout 10000"
-  },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",

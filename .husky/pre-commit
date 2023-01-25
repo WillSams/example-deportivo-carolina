@@ -2,6 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 ./node_modules/.bin/prettier packages/**/*.js --single-quote --trailing-comma es5 --write
-./node_modules/.bin/eslint packages/backend --ignore-pattern 'public/' --fix
-./node_modules/.bin/eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'build/' --fix
+./node_modules/.bin/eslint --ignore-pattern 'public/' --ignore-pattern 'build/' --ignore-pattern 'node_modules/' --fix
 git add .

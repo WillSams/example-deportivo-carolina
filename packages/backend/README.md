@@ -1,6 +1,6 @@
-# Example - Deportivo de Carolina Fútbol Club - Backend
+# Example AWS Lambda - Deportivo de Carolina Fútbol Club - Backend
 
-Serverless Example API using a Apollo Server, and AWS (API Gateway + DynamoDb + Lambda).
+This is an example Lambda for a GraphQL API using Apollo Server and DynamoDb.  Using the Serverless Framework, the example AWS Lambda is deployed with an API Gateway for the GraphQL endpoint, and a DynamoDb table for the data.
 
 ![text](../../images/api-1.png)
 ![text](../../images/api-2.png)
