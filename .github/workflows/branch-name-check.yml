@@ -1,4 +1,4 @@
-name: Enforce Branch Name "feature/", "chore/", "fix/", or "refactor/"
+name: Enforce Branch Name Semantics
 on:
   pull_request:
     branches: ["master"]
@@ -14,7 +14,7 @@ jobs:
           result-encoding: string
           script: |
             const enforceGitFlow = (branchName) => {
-              const gitFlowFormat = /(feat\W|feature\/|fix\/|chore\/|refactor\/)/
+              const gitFlowFormat = /(feat\W|feature\/|fix\/|chore\/|refactor\/|dependabot\/)/
               if (!gitFlowFormat.test(currentBranch)) {
                 core.setFailed(
                   `Branch names in PRs should use Gitflow. e.g. (feat, fix, chore, refactor).  To fix. ` +
