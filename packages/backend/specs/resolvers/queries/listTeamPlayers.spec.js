@@ -1,19 +1,18 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const expect = chai.expect;
-
-const { teamPlayers } = require('../../../src/resolvers/queries');
-const { reseedDb } = require('../../../specs');
+import queries from '../../../src/resolvers/queries.js';
+import { reseedDb } from '../../../specs/index.js';
 
 describe('Resolvers - Queries', () => {
-  before(() => reseedDb());
+  beforeEach(() => reseedDb());
+
+  afterEach(() => jest.clearAllMocks());
 
   const params = { teamId: 'test-team-1' };
 
-  it('`teamPlayers` query should retrieve players for given team', () => {
-    teamPlayers(null, { ...params }).then(result => {
-      expect(result.length).to.equal(2);
-    });
+  it('`teamPlayers` query should retrieve players for the given team', async () => {
+    const result = await queries.teamPlayers(null, { ...params });
+
+    expect(result.length).toBe(2);
   });
 });

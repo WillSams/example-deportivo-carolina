@@ -2,7 +2,7 @@
 
 Pre-requisites for local data:
     1. Start Docker container with `docker-compose up -d`.
-    2. Execute the Soccer data model file, `./database/local/Soccer_model.sh` script to generate the database.
+    2. Execute the Soccer data model file, `./clean_db.sh` script to generate the database.
 
 NOTE: Alternatively, if you rather use the [AWS NoSql Workbench](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html):
     1. Start Docker container with `docker-compose up -d`.
@@ -38,7 +38,7 @@ aws dynamodb query \
   --profile localhost-user \
   --region localhost
 
-# Querying API using Curl 
+# Querying API using Curl
 curl -X POST \
 -H "Content-Type: application/json" \
 -d '{"query":"{ listTeams {  Id \n Metadata \n TeamName  \n Arena } }"}' \

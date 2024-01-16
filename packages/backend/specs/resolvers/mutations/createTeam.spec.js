@@ -1,34 +1,27 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const expect = chai.expect;
-
-const { createTeam } = require('../../../src/resolvers/mutations');
-
-chai.should();
+import mutations from '../../../src/resolvers/mutations.js';
 
 describe('Resolvers - Mutation', () => {
-
   const params = {
     teamId: 'test-team-4',
     teamName: 'Savannah GA JUCO',
     arena: 'Savannah Civic Center'
   };
 
-  it('`createTeam` mutation should create team', () => {
-    createTeam(null, { input: { ...params } }).then(result => {
+  it('`createTeam` mutation should create team', async () => {
+    const result = await mutations.createTeam(null, { input: { ...params } });
 
-      result.should.have.property('Id');
-      expect(result.Id).to.equal(params.teamId);
+    expect(result).toHaveProperty('Id');
+    expect(result.Id).toBe(params.teamId);
 
-      result.should.have.property('Metadata');
-      expect(result.Metadata).to.equal('Team');
+    expect(result).toHaveProperty('Metadata');
+    expect(result.Metadata).toBe('Team');
 
-      result.should.have.property('TeamName');
-      expect(result.TeamName).to.equal(params.teamName);
+    expect(result).toHaveProperty('TeamName');
+    expect(result.TeamName).toBe(params.teamName);
 
-      result.should.have.property('Arena');
-      expect(result.Arena).to.equal(params.arena);
-    });
+    expect(result).toHaveProperty('Arena');
+    expect(result.Arena).toBe(params.arena);
   });
 });

@@ -1,34 +1,18 @@
-const { v4: uuidv4 } = require('uuid');
-
-const { createGame, createPlayer, createTeam } = require('./resolvers/mutations');
-const seeder = require('../src/utils/seeder');
+import { v4 as uuidv4 } from 'uuid';
+import { createGame, createPlayer, createTeam } from './resolvers/mutations.js';
+import seeder from '../src/utils/seeder.js';
+import { soccerTableName } from '../src/utils/server.js';
 
 // teamId, teamName, arena
 const teams = [
-  {
-    teamId: 'boysU9', teamName: 'Boys U9', arena: 'City Complex A'
-  },
-  {
-    teamId: 'boysU11', teamName: 'Boys U11', arena: 'City Complex B'
-  },
-  {
-    teamId: 'boysU13', teamName: 'Boys U13', arena: 'City Complex C'
-  },
-  {
-    teamId: 'boysU15', teamName: 'Boys U15', arena: 'City Complex D'
-  },
-  {
-    teamId: 'girlsU9', teamName: 'Girls U9', arena: 'City Complex A'
-  },
-  {
-    teamId: 'girlsU11', teamName: 'Girls U11', arena: 'City Complex B'
-  },
-  {
-    teamId: 'girlsU13', teamName: 'Girls U13', arena: 'City Complex C'
-  },
-  {
-    teamId: 'girlsU15', teamName: 'Girls U15', arena: 'City Complex D'
-  },
+  { teamId: 'boysU9', teamName: 'Boys U9', arena: 'City Complex A' },
+  { teamId: 'boysU11', teamName: 'Boys U11', arena: 'City Complex B' },
+  { teamId: 'boysU13', teamName: 'Boys U13', arena: 'City Complex C' },
+  { teamId: 'boysU15', teamName: 'Boys U15', arena: 'City Complex D' },
+  { teamId: 'girlsU9', teamName: 'Girls U9', arena: 'City Complex A' },
+  { teamId: 'girlsU11', teamName: 'Girls U11', arena: 'City Complex B' },
+  { teamId: 'girlsU13', teamName: 'Girls U13', arena: 'City Complex C' },
+  { teamId: 'girlsU15', teamName: 'Girls U15', arena: 'City Complex D' },
 ];
 
 const createFakePlayer = ({ team, position, }) => ({
@@ -45,24 +29,17 @@ const createFakePlayer = ({ team, position, }) => ({
   }
 });
 
-let players = [];
 const forwardsCount = 6;
 const defendersCount = 5;
 const midfieldersCount = 6;
 const goaliesCount = 2;
-teams.forEach(team => {
-  for (let i = 0; i < forwardsCount; i++)
-    players = players.concat([createFakePlayer({ team, position: 'F' })]);
 
-  for (let i = 0; i < midfieldersCount; i++)
-    players = players.concat([createFakePlayer({ team, position: 'M' })]);
-
-  for (let i = 0; i < defendersCount; i++)
-    players = players.concat([createFakePlayer({ team, position: 'D' })]);
-
-  for (let i = 0; i < goaliesCount; i++)
-    players = players.concat([createFakePlayer({ team, position: 'G' })]);
-});
+const players = teams.flatMap(team => [
+  ...Array(forwardsCount).fill().map(() => createFakePlayer({ team, position: 'F' })),
+  ...Array(midfieldersCount).fill().map(() => createFakePlayer({ team, position: 'M' })),
+  ...Array(defendersCount).fill().map(() => createFakePlayer({ team, position: 'D' })),
+  ...Array(goaliesCount).fill().map(() => createFakePlayer({ team, position: 'G' }))
+]);
 
 // teamId, gameId, gameDay, winLoss
 const games = [
@@ -76,19 +53,26 @@ const games = [
   { teamId: 'girlsU15', gameId: 'Game-girlsU15-21-01', gameDay: 'April-17-2021', winLoss: 'Loss' },
 ];
 
-const seedDatabase = () => {
+
+const seedDatabase = async () => {
   try {
-    console.log('Begin seeding of database...');
+    console.log(`Begin seeding of the database table ${soccerTableName}....`);
 
-    teams.map(input => createTeam(null, { input }));
-    players.map(input => createPlayer(null, { input }));
-    games.map(input => createGame(null, { input }));
+    const createTeamPromises = teams.map((input) => createTeam(null, { input }));
+    const createPlayerPromises = players.map((input) => createPlayer(null, { input }));
+    const createGamePromises = games.map((input) => createGame(null, { input }));
 
-    console.log('End of seeding of database.');
+    await Promise.all([
+      ...createTeamPromises,
+      ...createPlayerPromises,
+      ...createGamePromises
+    ]);
 
+    console.log(`End of seeding the database table ${soccerTableName}.`);
   } catch (ex) {
-    console.error('DynamoDB Seeding Failed! - ', ex.message);
+    console.error(`DynamoDB seeding of the database table ${soccerTableName} failed! - ${ex.message}`);
   }
 };
 
-seedDatabase();
+export default seedDatabase;
+

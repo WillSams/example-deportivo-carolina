@@ -1,16 +1,4 @@
-#!/bin/sh
-
-DETAILS=$(aws dynamodb describe-table --profile "$AWS_PROFILE" --table-name "$SOCCER_TABLE" --endpoint-url "http://localhost:$DYNAMODB_PORT" --region "$AWS_REGION" 2>/dev/null)
-
-if [ "$?" -eq 0 ]; then
-  echo "Deleting DynamoDB table $SOCCER_TABLE before recreating it..."
-  aws dynamodb delete-table \
-      --endpoint-url "http://localhost:$DYNAMODB_PORT" \
-      --table-name "$SOCCER_TABLE" \
-      --profile "$AWS_PROFILE" \
-      --region "$AWS_REGION"
-else
-  echo "Creating DynamoDB table $SOCCER_TABLE..."
+echo "Creating DynamoDB table $SOCCER_TABLE..."
   aws dynamodb create-table \
       --profile "$AWS_PROFILE" \
       --endpoint-url "http://localhost:$DYNAMODB_PORT" \
@@ -81,4 +69,3 @@ else
           ]" \
     --region "${AWS_REGION}"
     echo "Completed creating DynamoDB table $SOCCER_TABLE."
-fi

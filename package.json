@@ -12,7 +12,7 @@
     "dev:frontend": "lerna run dev --scope=frontend",
     "lint": "eslint packages/backend --ignore-pattern 'public/' && eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'build/'",
     "prepare": "husky install",
-    "seed": "lerna run seed --scope=backend",
+    "seed": "concurrently \"npm run dev:backend\" \"lerna run seed --scope=backend\"",
     "test:backend": "lerna run test --scope=backend",
     "test:frontend": "lerna run test --scope=frontend"
   },

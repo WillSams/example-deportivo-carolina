@@ -1,11 +1,6 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const expect = chai.expect;
-
-const { createGame } = require('../../../src/resolvers/mutations');
-
-chai.should();
+import mutations from '../../../src/resolvers/mutations.js';
 
 describe('Resolvers - Mutation', () => {
   const params = {
@@ -15,21 +10,19 @@ describe('Resolvers - Mutation', () => {
     winLoss: 'Loss'
   };
 
-  it('`createGame` mutation should create game', () => {
-    createGame(null, { input: { ...params } })
-      .then(result => {
+  it('`createGame` mutation should create game', async () => {
+    const result = await mutations.createGame(null, { input: { ...params } });
 
-        result.should.have.property('Id');
-        expect(result.Id).to.equal(params.teamId);
+    expect(result).toHaveProperty('Id');
+    expect(result.Id).toBe(params.teamId);
 
-        result.should.have.property('Metadata');
-        expect(result.Metadata).to.equal(params.gameId);
+    expect(result).toHaveProperty('Metadata');
+    expect(result.Metadata).toBe(params.gameId);
 
-        result.should.have.property('GameDay');
-        expect(result.GameDay).to.equal(params.gameDay);
+    expect(result).toHaveProperty('GameDay');
+    expect(result.GameDay).toBe(params.gameDay);
 
-        result.should.have.property('WinLoss');
-        expect(result.WinLoss).to.equal(params.winLoss);
-      });
+    expect(result).toHaveProperty('WinLoss');
+    expect(result.WinLoss).toBe(params.winLoss);
   });
 });

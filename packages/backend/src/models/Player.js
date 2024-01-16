@@ -1,6 +1,6 @@
-const { soccerTableName } = require('../utils/server');
+import { soccerTableName } from '../utils/server.js';
 
-exports.get = ({ teamId, playerId }) => ({
+const get = ({ teamId, playerId }) => ({
   TableName: soccerTableName,
   IndexName: 'MetadataIndex',
   ExpressionAttributeNames: { '#p': 'Metadata', '#a': 'Id' },
@@ -9,13 +9,13 @@ exports.get = ({ teamId, playerId }) => ({
   ExpressionAttributeValues: { ':v1': playerId, ':v2': teamId }
 });
 
-exports.queryByTeam = ({ teamId }) => ({
+const queryByTeam = ({ teamId }) => ({
   TableName: soccerTableName,
   KeyConditionExpression: 'Id = :v1 and begins_with(Metadata, :v2)',
   ExpressionAttributeValues: { ':v1': teamId, ':v2': 'Player' }
 });
 
-exports.put = ({ teamId, playerId, playerName, position, details }) => ({
+const put = ({ teamId, playerId, playerName, position, details }) => ({
   TableName: soccerTableName,
   Item: {
     Id: teamId,
@@ -23,5 +23,7 @@ exports.put = ({ teamId, playerId, playerName, position, details }) => ({
     PlayerName: playerName,
     Position: position,
     ...details
-  }
+  },
 });
+
+export default { get, put, queryByTeam };

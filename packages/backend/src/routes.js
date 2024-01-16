@@ -1,12 +1,12 @@
-const { about_controller } = require('./controllers');
+import aboutController from './controllers/about.js';
 
 const routes = (app) => {
   [
     // public routes
-    app.options('*', (req, res) => res.status(200).send()),
+    app.options('*', (_req, res) => res.status(200).send()),
 
-    app.get('/api/about', about_controller.about),
+    app.get('/api/about', aboutController.aboutHandler),
   ];
 };
 
-module.exports = routes;
+export default routes;

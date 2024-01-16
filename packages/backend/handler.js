@@ -1,5 +1,10 @@
-const serverless = require('serverless-http');
+import serverless from 'serverless-http';
+import bootstrap from './src/bootstrap.js';
 
-const bootstrap = require('./src/bootstrap');
-
-module.exports.handler = serverless(bootstrap);
+export const handler = async (event, context) => {
+  try {
+    return await serverless(bootstrap)(event, context);
+  } catch (error) {
+    return { statusCode: 500, body: 'Internal Server Error' };
+  }
+};

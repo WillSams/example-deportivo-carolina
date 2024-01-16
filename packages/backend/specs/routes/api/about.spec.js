@@ -1,29 +1,18 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const expect = chai.expect;
+import supertest from 'supertest';
+import bootstrap from '../../../src/bootstrap.js';
 
-const bootstrap = require('../../../src/bootstrap');
-
-chai.use(require('chai-http'));
-chai.should();
+const request = supertest(bootstrap);
 
 describe('Route - About - /api', () => {
-    it('`/api/about` should present details', done => {
-        chai.request(bootstrap)
-            .get('/api/about')
-            .end((err, res) => {
-                if (err || res.error) return done(err);
+  it('`/api/about` should present details', async () => {
+    const response = await request.get('/api/about');
 
-                expect(res.status).to.equal(200);
-
-                res.headers['content-type'].should.contains('application/json');
-
-                res.body.should.have.property('name');
-                res.body.should.have.property('version');
-                res.body.should.have.property('description');
-
-                done();
-            });
-    });
+    expect(response.status).toBe(200);
+    expect(response.headers['content-type']).toContain('application/json');
+    expect(response.body).toHaveProperty('name');
+    expect(response.body).toHaveProperty('version');
+    expect(response.body).toHaveProperty('description');
+  });
 });

@@ -1,14 +1,8 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const expect = chai.expect;
-
-const { createPlayer } = require('../../../src/resolvers/mutations');
-
-chai.should();
+import mutations from '../../../src/resolvers/mutations.js';
 
 describe('Resolvers - Mutation', () => {
-
   const params = {
     teamId: 'test-team-4',
     playerId: 'Player-abc',
@@ -16,20 +10,19 @@ describe('Resolvers - Mutation', () => {
     position: 'S'
   };
 
-  it('`createPlayer` mutation should create player', () => {
-    createPlayer(null, { input: { ...params } }).then(result => {
+  it('`createPlayer` mutation should create player', async () => {
+    const result = await mutations.createPlayer(null, { input: { ...params } });
 
-      result.should.have.property('Id');
-      expect(result.Id).to.equal(params.teamId);
+    expect(result).toHaveProperty('Id');
+    expect(result.Id).toBe(params.teamId);
 
-      result.should.have.property('Metadata');
-      expect(result.Metadata).to.equal(params.playerId);
+    expect(result).toHaveProperty('Metadata');
+    expect(result.Metadata).toBe(params.playerId);
 
-      result.should.have.property('PlayerName');
-      expect(result.PlayerName).to.equal(params.playerName);
+    expect(result).toHaveProperty('PlayerName');
+    expect(result.PlayerName).toBe(params.playerName);
 
-      result.should.have.property('Position');
-      expect(result.Position).to.equal(params.position);
-    });
+    expect(result).toHaveProperty('Position');
+    expect(result.Position).toBe(params.position);
   });
 });

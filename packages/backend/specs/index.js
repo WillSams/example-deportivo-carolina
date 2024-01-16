@@ -1,9 +1,9 @@
-process.env.NODE_ENV = 'test';
+import { spawn } from 'child_process';
+import sleep from 'sleep';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const { spawn } = require('child_process');
-const { sleep } = require('sleep');
-
-const { createGame, createPlayer, createTeam } = require('../src/resolvers/mutations');
+import mutations from '../src/resolvers/mutations.js';
 
 const teams = [
   { teamId: 'test-team-1', teamName: 'Test Team 1', arena: 'Test Team 1 Arena' },
@@ -32,30 +32,28 @@ const players = [
   },
 ];
 
-// teamId, gameId, gameDay, winLoss
 const games = [
   { teamId: 'test-team-1', gameId: 'Game-1', gameDay: 'Jan-10-2022', winLoss: 'Win' },
   { teamId: 'test-team-2', gameId: 'Game-2', gameDay: 'Jan-10-2022', winLoss: 'Loss' },
   { teamId: 'test-team-3', gameId: 'Game-3', gameDay: 'Jan-17-2022', winLoss: 'Win' },
   { teamId: 'test-team-1', gameId: 'Game-4', gameDay: 'Jan-17-2022', winLoss: 'Loss' },
-
 ];
 
+const currentModuleFileURL = import.meta.url;
+const currentModuleDir = dirname(fileURLToPath(currentModuleFileURL));
+
 const removeDbTestData = () => {
-  sleep(1);
-  spawn(`${__dirname}/../clean_db.sh`);
-  sleep(1);
+  sleep.sleep(1);
+  spawn(`${currentModuleDir}/../clean_db.sh`);
+  sleep.sleep(1);
 };
 
 const reseedDb = () => {
   removeDbTestData();
 
-  teams.map(input => createTeam(null, { input }));
-  players.map(input => createPlayer(null, { input }));
-  games.map(input => createGame(null, { input }));
+  teams.forEach(input => mutations.createTeam(null, { input }));
+  players.forEach(input => mutations.createPlayer(null, { input }));
+  games.forEach(input => mutations.createGame(null, { input }));
 };
 
-module.exports = {
-  reseedDb,
-  removeDbTestData,
-};
+export { reseedDb, removeDbTestData };

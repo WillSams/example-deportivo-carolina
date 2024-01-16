@@ -1,31 +1,27 @@
 process.env.NODE_ENV = 'test';
 
-const chai = require('chai');
-const expect = chai.expect;
-
-const { team } = require('../../../src/resolvers/queries');
-const { reseedDb } = require('../../../specs');
-
-chai.should();
+import queries from '../../../src/resolvers/queries.js';
+import { reseedDb } from '../../../specs/index.js';
 
 describe('Resolvers - Queries', () => {
-  before(() => reseedDb());
+  beforeEach(() => reseedDb());
+  afterEach(() => jest.clearAllMocks());
 
   const params = { teamId: 'test-team-3' };
 
-  it('`team` query should retrieve team', () => {
-    team(null, { ...params }).then(result => {
-      result.should.have.property('Id');
-      expect(result.Id).to.equal(params.teamId);
+  it('`team` query should retrieve team', async () => {
+    const result = await queries.team(null, { ...params });
 
-      result.should.have.property('Metadata');
-      expect(result.Metadata).to.equal('Team');
+    expect(result).toHaveProperty('Id');
+    expect(result.Id).toBe(params.teamId);
 
-      result.should.have.property('TeamName');
-      expect(result.TeamName).to.equal('Test Team 3');
+    expect(result).toHaveProperty('Metadata');
+    expect(result.Metadata).toBe('Team');
 
-      result.should.have.property('Arena');
-      expect(result.Arena).to.equal('Test Team 3 Arena');
-    });
+    expect(result).toHaveProperty('TeamName');
+    expect(result.TeamName).toBe('Test Team 3');
+
+    expect(result).toHaveProperty('Arena');
+    expect(result.Arena).toBe('Test Team 3 Arena');
   });
 });

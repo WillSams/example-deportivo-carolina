@@ -1,5 +1,5 @@
-const Game = require('./Game');
-const Player = require('./Player');
-const Team = require('./Team');
+import Game from './Game.js';
+import Player from './Player.js';
+import Team from './Team.js';
 
-module.exports = { Game, Player, Team, };
+export { Game, Player, Team };

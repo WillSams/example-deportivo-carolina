@@ -1,4 +1,4 @@
-const ddbClient = require('../../dynamodb');
+import ddbClient from './../dynamodb.js';
 
 const dbGet = ({ query }) => {
   return new Promise((resolve, reject) => {
@@ -36,9 +36,10 @@ const dbScan = ({ query }) => {
   });
 };
 
-module.exports = {
+export {
   dbGet,
   dbPut,
   dbQuery,
   dbScan,
 };
+

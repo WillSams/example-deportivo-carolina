@@ -1,10 +1,8 @@
-const { ApolloServer } = require('apollo-server-express');
-const { ApolloError } = require('apollo-server-errors');
+import { ApolloServer, ApolloError } from 'apollo-server-express';
+import { typeDefs } from './typeDefs.js';
+import resolvers from './resolvers/index.js';
 
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
-
-const initGqlServer = async app => {
+const initGqlServer = async (app) => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -28,4 +26,4 @@ const initGqlServer = async app => {
   server.applyMiddleware(apolloRegistration);
 };
 
-module.exports = initGqlServer;
+export default initGqlServer;

@@ -32,10 +32,7 @@ http://localhost:4040/api/about
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $TOKEN_SECRET" \
--d '{
-    "query":"mutation CreateTeam($input: CreateTeamInput!) { createTeam(input: $input) { Id Metadata TeamName Arena  } }",
-    "variables": {"input":{"teamId":"test-team-1","teamName":"Test Team","arena":"Test Team Arena"}}
-  }' \
+-d '{ "query": "mutation { createTeam(input: { teamId: \"test-team-1\", teamName: \"Test Team\", arena: \"Test Team Arena\" }) { Id Metadata TeamName Arena } }"}' \
 http://localhost:4040/api/graphql
 
 # The result should be:
@@ -45,9 +42,7 @@ http://localhost:4040/api/graphql
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $TOKEN_SECRET" \
--d '{
-    "query":"query { team(teamId: \"test-team-1\") { Id Metadata TeamName Arena  } }"
-  }' \
+-d '{ "query":"query { team(teamId: \"test-team-1\") { Id Metadata TeamName Arena  } }"}' \
 http://localhost:4040/api/graphql
 
 # The result should be:
@@ -69,10 +64,7 @@ https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/api/about
 curl -X POST \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $TOKEN_SECRET" \
--d '{
-    "query":"mutation CreateTeam($input: CreateTeamInput!) { createTeam(input: $input) { Id Metadata TeamName Arena  } }",
-    "variables": {"input":{"teamId":"test-team-1","teamName":"Test Team","arena":"Test Team Arena"}}
-  }' \
+-d '{ "query": "mutation { createTeam(input: { teamId: \"test-team-1\", teamName: \"Test Team\", arena: \"Test Team Arena\" }) { Id Metadata TeamName Arena } }"}' \
 https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/api/graphql
 
 # The result should be:

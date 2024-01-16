@@ -1,12 +1,14 @@
-const properties = require('../../package.json');
+/* eslint-disable */
+import properties from './../../package.json';
 
-//GET /api/about
-exports.about = ((request, response) => {
+const aboutHandler = (_request, response) => {
   const aboutInfo = {
     name: properties.name,
     version: properties.version,
     description: properties.description,
-    environment: process?.env?.NODE_ENV || 'unknown',
+    environment: process.env.NODE_ENV ?? 'unknown',
   };
   response.json(aboutInfo);
-});
+};
+
+export default { aboutHandler };

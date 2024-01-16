@@ -1,6 +1,6 @@
-const { soccerTableName } = require('../utils/server');
+import { soccerTableName } from '../utils/server.js';
 
-exports.get = ({ teamId }) => ({
+const get = ({ teamId }) => ({
   TableName: soccerTableName,
   Key: {
     Id: teamId,
@@ -8,7 +8,7 @@ exports.get = ({ teamId }) => ({
   }
 });
 
-exports.put = ({ teamId, teamName, arena }) => ({
+const put = ({ teamId, teamName, arena }) => ({
   TableName: soccerTableName,
   Item: {
     Id: teamId,
@@ -18,7 +18,7 @@ exports.put = ({ teamId, teamName, arena }) => ({
   },
 });
 
-exports.queryAll = () => ({
+const queryAll = () => ({
   TableName: soccerTableName,
   IndexName: 'MetadataIndex',
   ProjectionExpression: 'Id, Metadata, TeamName, Arena',
@@ -26,3 +26,5 @@ exports.queryAll = () => ({
   KeyConditionExpression: '#p = :v1',
   ExpressionAttributeValues: { ':v1': 'Team' }
 });
+
+export default { get, put, queryAll };

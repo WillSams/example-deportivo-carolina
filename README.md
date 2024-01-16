@@ -27,9 +27,19 @@ For the AWS CLI, you'll need to configure your credentials.  You can do so by ex
 aws configure
 ```
 
+The default site configuration and unit tests will require a profile called **localhost-user**.  The keys can be anything but not blank values:
+
+```bash
+echo "
+[localhost-user]
+aws_access_key_id=fakeMyKeyId
+aws_secret_access_key=fakeSecretAccessKey
+" >> ~/.aws/credentials
+```
+
 ### Installing Direnv
 
-Direnv is used to manage environment variables.  It's a great tool that allows you to set environment variables in a `.envrc` file and have them automatically loaded when you `cd` into a directory.  
+Direnv is used to manage environment variables.  It's a great tool that allows you to set environment variables in a `.envrc` file and have them automatically loaded when you `cd` into a directory.
 
 ```bash
 sudo apt-get install direnv
@@ -66,17 +76,17 @@ direnv allow                            # refreshes variables in your PATH
 serverless login                        # will open a browser, we'll need to be logged in for backend/frontend steps
 
 # BACKEND - Execute  the following commands in the backend folder:
-PROJECT_ROOT=$(pwd)                     
+PROJECT_ROOT=$(pwd)
 cd $PROJECT_ROOT/packages/backend
 cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your TOKEN_SECRET
-serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com. 
-#Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
+serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.
+#Do you want to deploy now? No                  # IMPORTANT! We can do this later.
 
 # FRONTEND - Execute  the following commands in the frontend folder:
 cd $PROJECT_ROOT/packages/frontend
 cp docs/serverless.yml.example serverless.yml   # IMPORTANT! Edit file and set your Serverless 'org' and your REACT_APP_TOKEN_SECRET
-serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.   
-#Do you want to deploy now? No                  # IMPORTANT! We can do this later.     
+serverless --org=<YOUR SERVERLESS ORG>          # IMPORTANT! Create the app/service on Serverless.com.
+#Do you want to deploy now? No                  # IMPORTANT! We can do this later.
 ```
 
 ### Getting Both Backend/Frontend Started
@@ -93,15 +103,7 @@ npm run dev             # concurrently starts both the frontend web site and bac
 
 ## Testing
 
-Before running tests, make sure you have the DynamoDB Docker container running by execute `docker-compose up -d` in the root of the repository.  The backend tests require use of the DynamoDB Docker container, so you'll also need to add dummy credentials to your `~/.aws/credentials` file.  You can just perform the following to do so:
-
-```bash
-echo "
-[localhost-user]
-aws_access_key_id = 
-aws_secret_access_key = 
-" >> ~/.aws/credentials
-```
+Before running tests, make sure you have the DynamoDB Docker container running by execute `docker-compose up -d` in the root of the repository.  The backend tests require use of the DynamoDB Docker container, so you'll also need to add dummy credentials to your `~/.aws/credentials` file as mentioned in **Pre-requisites**.
 
 Then to perform tests on the backend, execute `npm run test:backend`.  To perform tests on the frontend, execute `npm run test:frontend`.  Both steps should be performed in the root of the repository.
 
