@@ -1,11 +1,7 @@
-/* eslint-disable */
-import properties from './../../package.json';
-
 const aboutHandler = (_request, response) => {
   const aboutInfo = {
-    name: properties.name,
-    version: properties.version,
-    description: properties.description,
+    name: 'Example - Deportivo de Carolina Fútbol Club - Backend',
+    description: 'Example API using GraphQL and AWS DynamoDB SDK',
     environment: process.env.NODE_ENV ?? 'unknown',
   };
   response.json(aboutInfo);
