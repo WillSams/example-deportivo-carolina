@@ -86,7 +86,7 @@ const getShootingFoot = (pos) => {
   return foot;
 };
 
-export {
+export default {
   getFakeBirthdate,
   getFakeHeight,
   getFakeHomeTown,

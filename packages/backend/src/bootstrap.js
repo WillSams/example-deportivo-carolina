@@ -12,11 +12,12 @@ app.use(cors());
 routes(app);
 initGqlServer(app);
 
-const bootstrap = app.listen(process.env.API_PORT, () => {
-  const host = bootstrap.address().address;
-  const port = bootstrap.address().port;
+export default { app };
 
-  console.log('Deportivo Carolina Backend - listening at http://%s:%s', host, port);
-});
 
-export default bootstrap;
+
+
+
+
+
+

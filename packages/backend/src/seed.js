@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { createGame, createPlayer, createTeam } from './resolvers/mutations.js';
+import mutations from './resolvers/mutations.js';
 import seeder from '../src/utils/seeder.js';
 import { soccerTableName } from '../src/utils/server.js';
 
@@ -58,9 +58,9 @@ const seedDatabase = async () => {
   try {
     console.log(`Begin seeding of the database table ${soccerTableName}....`);
 
-    const createTeamPromises = teams.map((input) => createTeam(null, { input }));
-    const createPlayerPromises = players.map((input) => createPlayer(null, { input }));
-    const createGamePromises = games.map((input) => createGame(null, { input }));
+    const createTeamPromises = teams.map((params) => mutations.createTeam(null, { input: { ...params } }));
+    const createPlayerPromises = players.map((params) => mutations.createPlayer(null, { input: { ...params } }));
+    const createGamePromises = games.map((params) => mutations.createGame(null, { input: { ...params } }));
 
     await Promise.all([
       ...createTeamPromises,
@@ -74,5 +74,7 @@ const seedDatabase = async () => {
   }
 };
 
-export default seedDatabase;
+seedDatabase().catch(err => {
+  console.error('An error occurred during database seeding:', err);
+});
 

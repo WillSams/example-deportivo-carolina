@@ -1,6 +1,7 @@
-﻿
+
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Team {

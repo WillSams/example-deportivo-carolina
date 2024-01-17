@@ -49,36 +49,3 @@ http://localhost:4040/api/graphql
 # {"data":{"team":{"Id":"test-team-1","Metadata":"Team","TeamName":"Test Team","Arena":"Test Team Arena"}}}
 ```
 
-### Deployed
-
-```bash
-# Getting API details
-curl -X GET \
--H "Content-Type: application/json" \
-https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/api/about
-
-# The result should resemble:
-# {"name":"deportivo-carolina-backend","version":"0.9.7","description":"Example API using GraphQL and AWS DynamoDB SDK.","environment":"development"}
-
-# Creating a team
-curl -X POST \
--H "Content-Type: application/json" \
--H "Authorization: Bearer $TOKEN_SECRET" \
--d '{ "query": "mutation { createTeam(input: { teamId: \"test-team-1\", teamName: \"Test Team\", arena: \"Test Team Arena\" }) { Id Metadata TeamName Arena } }"}' \
-https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/api/graphql
-
-# The result should be:
-# {"data":{"createTeam":{"Id":"test-team-1","Metadata":"Team","TeamName":"Test Team","Arena":"Test Team Arena"}}}
-
-# Retrieving a team
-curl -X POST \
--H "Content-Type: application/json" \
--H "Authorization: Bearer $TOKEN_SECRET" \
--d '{
-    "query":"query { team(teamId: \"test-team-1\") { Id Metadata TeamName Arena  } }"
-  }' \
-https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/api/graphql
-
-# The result should be:
-# {"data":{"team":{"Id":"test-team-1","Metadata":"Team","TeamName":"Test Team","Arena":"Test Team Arena"}}}
-```

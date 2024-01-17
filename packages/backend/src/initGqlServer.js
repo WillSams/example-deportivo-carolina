@@ -13,6 +13,7 @@ const initGqlServer = async (app) => {
       }
     },
     formatError: (err) => err.message,
+    debug: process.env.NODE_ENV !== 'production',
   });
 
   await server.start();

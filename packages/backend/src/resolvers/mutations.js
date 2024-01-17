@@ -1,16 +1,6 @@
 import { dbGet, dbPut, dbQuery } from './../utils/responses.js';
 import { Game, Player, Team } from './../models/index.js';
-
-const createTeamRelatedEntity = async (root, { item, query }) => {
-  try {
-    await dbPut({ item });
-    const data = await dbQuery({ query });
-    return data[0];
-  } catch (error) {
-    console.error('Error in creating team related entity:', error);
-    throw error;
-  }
-};
+import { createTeamRelatedEntity } from './helpers.js';
 
 const createTeam = async (root, { input }) => {
   try {

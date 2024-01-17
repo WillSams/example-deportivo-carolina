@@ -3,6 +3,7 @@ import { gql } from 'apollo-server-express';
 const typeDefs = gql`
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Team {
