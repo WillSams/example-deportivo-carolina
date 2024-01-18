@@ -46,7 +46,10 @@ Execute the following within your terminal:
 
 ```bash
 nvm use                                 # To eliminate any issues, install/use the version listed in .nvmrc.
-npm run bootstrap  --legacy-peer-deps   # install the packages needed for both the frontend & backend
+npm i                                   # Install packages needed for the repository root
+cd frontend && npm i --legacy-peer-deps # Install packages needed for the frontend
+cd backend && npm                       # Install packages needed for the backend
+cd ..                                   # Navigate back to the root of the repository
 ```
 
 ### Create the database
