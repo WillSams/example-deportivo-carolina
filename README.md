@@ -93,7 +93,7 @@ http://localhost:4040/api/graphql
 
 You can also acces the Apollo GraphiQL (interactive test playground) instance at [http://localhost:$API_PORT/graphql](http://localhost:$API_PORT/graphql).
 
-![text](../../images/api-1.png)
+![text](images/api-1.png)
 
 Additionally, you can visually view, create, or delete DynamoDB tables.  Navigate to [http://localhost:8001](http:/localhost:8001) in your browser to access.  This will require the `DYNAMO_ENPOINT` environment variable to be set in the terminal.  See `.envrc.example` for details.
 
