@@ -1,67 +1,79 @@
 import axios from 'axios';
-import _ from 'lodash';
-
 import { actionTypes } from './actionTypes';
 
 let instance = null;
 
-export const createBaseApi = (store) => {
-  // not the way we should be doing token authorization, this is just a placeholder
-  instance = axios.create({
+const createInstance = (token) => {
+  return axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/api`,
     headers: {
       'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest',
-      Authorization: `Bearer ${process.env.REACT_APP_TOKEN_SECRET} `,
+      Authorization: `Bearer ${token}`,
     },
   });
+};
 
-  instance.interceptors.request.use(
-    (config) => {
-      store.dispatch({ type: actionTypes.API_REQUEST });
+const handleRequest = (config, store) => {
+  store.dispatch({ type: actionTypes.API_REQUEST });
+  return config;
+};
 
-      return config;
-    },
-    (error) => {
-      store.dispatch({
-        type: actionTypes.API_REQUEST_ERROR,
-        error,
-      });
+const handleRequestError = (error, store) => {
+  store.dispatch({
+    type: actionTypes.API_REQUEST_ERROR,
+    error,
+  });
+  return Promise.reject(error);
+};
 
-      return Promise.reject(error);
-    }
-  );
+const handleResponse = (response, store) => {
+  store.dispatch({ type: actionTypes.API_REQUEST_DONE });
+  if (response.data.errors) {
+    store.dispatch({
+      type: actionTypes.API_REQUEST_ERROR,
+      error: response.data.errors,
+    });
+  }
+  return response;
+};
 
-  instance.interceptors.response.use(
-    (response) => {
-      store.dispatch({ type: actionTypes.API_REQUEST_DONE });
+const handleResponseError = (error, store) => {
+  store.dispatch({ type: actionTypes.API_REQUEST_DONE });
+  if (error.response.status == 401) {
+    store.dispatch({ type: actionTypes.API_REQUEST_UNAUTHORIZED });
+  }
+  if (error.response.status === 404) {
+    store.dispatch({ type: actionTypes.API_REQUEST_NOT_FOUND });
+  }
+  return Promise.reject(error);
+};
 
-      if (response.data.errors) {
-        store.dispatch({
-          type: actionTypes.API_REQUEST_ERROR,
-          error: response.data.errors,
-        });
-      }
+export const createBaseApi = async (store) => {
+  try {
+    const tokenResponse = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/token`
+    );
+    const token = tokenResponse?.data?.token;
+    instance = createInstance(token);
 
-      return response;
-    },
-    (error) => {
-      store.dispatch({ type: actionTypes.API_REQUEST_DONE });
+    instance.interceptors.request.use(
+      (config) => handleRequest(config, store),
+      (error) => handleRequestError(error, store)
+    );
+    instance.interceptors.response.use(
+      (response) => handleResponse(response, store),
+      (error) => handleResponseError(error, store)
+    );
 
-      if (error.response.status == 401)
-        store.dispatch({ type: actionTypes.API_REQUEST_UNAUTHORIZED });
-
-      if (error.response.status === 404)
-        store.dispatch({ type: actionTypes.API_REQUEST_NOT_FOUND });
-
-      return Promise.reject(error);
-    }
-  );
-  return instance;
+    return instance;
+  } catch (error) {
+    console.error('Error fetching token:', error);
+    throw error;
+  }
 };
 
 export const getBaseApi = () => {
   if (instance == null) throw new Error('Base API not initialized.');
-
   return instance;
 };

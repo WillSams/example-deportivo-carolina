@@ -71,9 +71,32 @@ Also, you just execute the backend via `npm run dev:backend`.  to verify the bac
 curl http://localhost:$API_PORT/about
 ```
 
+Also, you shoud be able to create a team:
+
+```bash
+# First, grab an access token provided by the backend API
+ACCESS_TOKEN=$(curl -s -X GET \
+  -H 'accept: application/json' \
+  'http://localhost:4040/api/token' | jq -r '.token')
+
+# Creating a team
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $ACCESS_TOKEN" \
+-d '{ "query": "mutation { createTeam(input: { teamId: \"test-team-1\", teamName: \"Test Team\", arena: \"Test Team Arena\" }) { Id Metadata TeamName Arena } }"}' \
+http://localhost:4040/api/graphql
+
+# Retrieving the team we just created
+curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $ACCESS_TOKEN" \
+-d '{ "query":"query { team(teamId: \"test-team-1\") { Id Metadata TeamName Arena  } }"}' \
+http://localhost:4040/api/graphql
+```
+
 You can also acces the Apollo GraphiQL (interactive test playground) instance at [http://localhost:$API_PORT/graphql](http://localhost:$API_PORT/graphql).
 
-![text](images/dynamodb_admin.png)
+![text](../../images/api-1.png)
 
 Additionally, you can visually view, create, or delete DynamoDB tables.  Navigate to [http://localhost:8001](http:/localhost:8001) in your browser to access.  This will require the `DYNAMO_ENPOINT` environment variable to be set in the terminal.  See `.envrc.example` for details.
 
@@ -82,8 +105,4 @@ Additionally, you can visually view, create, or delete DynamoDB tables.  Navigat
 ## Testing
 
 Both the backend and frontend utilizes [Jest](https://jestjs.io/).  To run these tests, simply execute `npm run test:frontend` or `npm run test:backend`.
-
-![text](images/frontend_tests_example.png)
-![text](images/backend_tests_example.png)
-
 
