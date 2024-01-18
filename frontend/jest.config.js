@@ -9,10 +9,6 @@ module.exports = {
       '<rootDir>/specs/fileTransformer.js',
   },
   transformIgnorePatterns: ['/node_modules/'],
-  /*setupFiles: ['raf/polyfill'],
-  setupFilesAfterEnv: [
-    '<rootDir>/specs/test-bundler.js',  
-  ],*/
   moduleNameMapper: {
     '^axios$': 'axios/dist/node/axios.cjs',
   },
