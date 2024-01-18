@@ -21,9 +21,6 @@ The below are optional but highly recommended:
 * [nvm](https://github.com/nvm-sh/nvm) - Used to manage NodeJS versions.
 * [Direnv](https://direnv.net/) - Used to manage environment variables.
 - Install [direnv](https://direnv.net) for persisting environment variables needed for development.
-- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
-
-For the AWS CLI, you'll need to configure your credentials.  You can do so by executing the following:
 
 ## Getting Started
 
