@@ -1,14 +1,20 @@
 export NODE_ENV=development
 
 export SOCCER_TABLE=Deportivo-${NODE_ENV}
-export DYNAMODB_PORT=8042
 
-export AWS_ACCESS_KEY_ID=
-export AWS_SECRET_ACCESS_KEY=
-export AWS_REGION=localhost
+export DYNAMODB_PORT=8000
+export SITE_PORT=4000
+export API_PORT=4040
+
+export DYNAMO_ENDPOINT=http://localhost:${DYNAMODB_PORT}
+
+export AWS_PROFILE=localhost-user
+export AWS_ACCESS_KEY_ID=fakeMyKeyId
+export AWS_SECRET_ACCESS_KEY=fakeSecretAccessKey
+export AWS_REGION=us-east-1
 
 export API_URL=http://localhost:${API_PORT}
 export REACT_APP_API_URL=${API_URL}
 
-export TOKEN_SECRET=
+export TOKEN_SECRET=s3cret_t0ken
 export REACT_APP_TOKEN_SECRET=${TOKEN_SECRET}

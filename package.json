@@ -1,20 +1,16 @@
 {
   "name": "deportivocarolina",
-  "version": "0.7.5",
-  "license": "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
+  "version": "0.8.5",
   "scripts": {
-    "bootstrap": "npx --yes lerna@^5.6.2 bootstrap",
-    "deploy": "concurrently \"npm run deploy:backend\" \"npm run deploy:frontend\"",
-    "deploy:backend": "lerna run deploy --scope=backend",
-    "deploy:frontend": "lerna run deploy --scope=frontend",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "lerna run dev --scope=backend",
-    "dev:frontend": "lerna run dev --scope=frontend",
-    "lint": "eslint packages/backend --ignore-pattern 'public/' && eslint packages/frontend --ignore-pattern 'public/' --ignore-pattern 'build/'",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:db-admin\"",
+    "dev:backend": "concurrently \"npm run dev:db-admin\" \"cd backend && npm run dev\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:db-admin": "./node_modules/dynamodb-admin/bin/dynamodb-admin.js &",
+    "lint": "eslint backend && eslint frontend --ignore-pattern 'public/' --ignore-pattern 'build/'",
     "prepare": "husky install",
-    "seed": "lerna run seed --scope=backend",
-    "test:backend": "lerna run test --scope=backend",
-    "test:frontend": "lerna run test --scope=frontend"
+    "seed": "concurrently \"npm run dev:backend\" \"cd backend && npm run seed\"",
+    "test:backend": "cd backend && npm run test",
+    "test:frontend": "cd frontend && npm run test"
   },
   "dependencies": {
     "concurrently": "^6.5.1"
@@ -22,15 +18,11 @@
   "devDependencies": {
     "eslint": "^7.26.0",
     "husky": "^6.0.0",
-    "lerna": "^5.6.2",
-    "nx": "^14.7.8",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "dynamodb-admin": "^4.6.1"
   },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "es5"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }
